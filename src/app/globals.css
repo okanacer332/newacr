@@ -4,8 +4,7 @@
 
 :root {
   --background-rgb: 0, 0, 0;
-  --foreground-rgb: 245, 245, 247; /* Apple White */
-  --accent-blue: #2997ff; /* Apple Blue */
+  --foreground-rgb: 245, 245, 247;
 }
 
 * {
@@ -16,41 +15,48 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: black;
+  background: #000;
   overflow-x: hidden;
-  /* Apple font hissi için */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Apple SF Pro benzeri font stack */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   height: 100%;
 }
 
-/* Scrollbar'ı ince ve şık yap (TikTok/Reels tarzı) */
+/* Scrollbar styling - ince ve minimal */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
 }
 
-/* Mobile için scrollbar'ı gizle */
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+/* Mobile için scrollbar gizle */
 @media (max-width: 768px) {
   ::-webkit-scrollbar {
     display: none;
@@ -61,32 +67,32 @@ body {
   }
 }
 
-/* Scroll Snap */
-.snap-container {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
+/* Typography improvements - Apple style */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+p {
+  line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
-/* Apple Tarzı Metin Gradients */
-.text-gradient {
-  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Premium button styling */
+button {
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
-.text-glow {
-  text-shadow: 0 0 40px rgba(41, 151, 255, 0.3);
-}
-
-/* Smooth transitions for all elements */
+/* Smooth transitions everywhere */
 * {
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
 /* Video optimization */
@@ -94,18 +100,88 @@ video {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 /* Backdrop blur support */
-@supports (backdrop-filter: blur(10px)) {
+@supports (backdrop-filter: blur(20px)) {
   .backdrop-blur-md {
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(40px) saturate(180%);
   }
 }
 
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  html {
-    scroll-snap-type: y proximity;
+/* Selection styling */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+}
+
+/* Prevent text selection on interactive elements */
+button, a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Premium gradient text */
+.gradient-text {
+  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hardware acceleration for smooth animations */
+.hw-accelerate {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
+
+/* High resolution display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Dark mode native support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+/* Improved image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
