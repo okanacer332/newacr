@@ -8,6 +8,19 @@
   --accent-blue: #2997ff; /* Apple Blue */
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100%;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: black;
@@ -16,15 +29,48 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
-/* Scrollbar'ı tamamen gizle (Apple tarzı temizlik) */
+/* Scrollbar'ı ince ve şık yap (TikTok/Reels tarzı) */
 ::-webkit-scrollbar {
-  display: none; 
+  width: 4px;
 }
-body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile için scrollbar'ı gizle */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Scroll Snap */
+.snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* Apple Tarzı Metin Gradients */
@@ -36,4 +82,30 @@ body {
 
 .text-glow {
   text-shadow: 0 0 40px rgba(41, 151, 255, 0.3);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Video optimization */
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
 }
