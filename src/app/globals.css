@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-rgb: 0, 0, 0;
+  --foreground-rgb: 245, 245, 247; /* Apple White */
+  --accent-blue: #2997ff; /* Apple Blue */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: black;
+  overflow-x: hidden;
+  /* Apple font hissi için */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar'ı tamamen gizle (Apple tarzı temizlik) */
+::-webkit-scrollbar {
+  display: none; 
+}
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Apple Tarzı Metin Gradients */
+.text-gradient {
+  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-glow {
+  text-shadow: 0 0 40px rgba(41, 151, 255, 0.3);
+}
