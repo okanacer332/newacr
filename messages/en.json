@@ -1,0 +1,14 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "features": "Features",
+    "blog": "Blog",
+    "docs": "Docs",
+    "support": "Support",
+    "signin": "Sign In",
+    "signup": "Sign Up"
+  },
+  "Common": {
+    "language": "Language"
+  }
+}

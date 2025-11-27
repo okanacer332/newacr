@@ -1,0 +1,14 @@
+{
+  "Navigation": {
+    "home": "Anasayfa",
+    "features": "Özellikler",
+    "blog": "Blog",
+    "docs": "Dokümanlar",
+    "support": "Destek",
+    "signin": "Giriş Yap",
+    "signup": "Kayıt Ol"
+  },
+  "Common": {
+    "language": "Dil"
+  }
+}
