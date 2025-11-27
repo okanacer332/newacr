@@ -1,14 +1,10 @@
 {
-  "Navigation": {
-    "home": "Anasayfa",
-    "features": "Özellikler",
-    "blog": "Blog",
-    "docs": "Dokümanlar",
-    "support": "Destek",
-    "signin": "Giriş Yap",
-    "signup": "Kayıt Ol"
-  },
-  "Common": {
-    "language": "Dil"
+  "Hero": {
+    "tagline": "🔥 ACRTECH - Uçtan Uca Dijital Dönüşüm",
+    "title": "Geleceği Bugünden Kodluyoruz: İşletmenizin Dijital İkizi",
+    "description": "ACRTECH olarak salt bir teknoloji sunumuyla yetinmiyor; fabrikanızdan finansınıza kadar işletmenizin dijital ikizini oluşturuyoruz. İşletmenizi sadece yönetmeyin, onu geleceğe hazırlayın. Biz, sahadaki veriyi finansal zekaya, rutin işleri ise yüksek performansa dönüştüren uçtan uca bir ekosistem sunuyoruz.",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "getStarted": "Hemen Başlayın",
+    "tryForFree": "Ücretsiz deneyin, kredi kartı gerekmez."
   }
 }

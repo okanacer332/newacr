@@ -1,14 +1,10 @@
 {
-  "Navigation": {
-    "home": "Home",
-    "features": "Features",
-    "blog": "Blog",
-    "docs": "Docs",
-    "support": "Support",
-    "signin": "Sign In",
-    "signup": "Sign Up"
-  },
-  "Common": {
-    "language": "Language"
+  "Hero": {
+    "tagline": "🔥 ACRTECH - End-to-End Digital Transformation",
+    "title": "Coding the Future Today: Your Business's Digital Twin",
+    "description": "At ACRTECH, we don't just offer technology; we build the digital twin of your business, from your factory floor to your finance department. Don't just manage your business—prepare it for the future. We offer an end-to-end ecosystem that transforms field data into financial intelligence and routine tasks into high performance.",
+    "emailPlaceholder": "Enter your email address",
+    "getStarted": "Get Started",
+    "tryForFree": "Try for free, no credit card required."
   }
 }
