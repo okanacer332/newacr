@@ -55,45 +55,54 @@ const Header = () => {
             />
           </a>
 
-          {/* <!-- Hamburger Toggle BTN --> */}
-          <button
-            aria-label="hamburger Toggler"
-            className="block xl:hidden"
-            onClick={() => setNavigationOpen(!navigationOpen)}
-          >
-            <span className="relative block h-5.5 w-5.5 cursor-pointer">
-              <span className="absolute right-0 block h-full w-full">
-                <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-0 duration-200 ease-in-out dark:bg-white ${
-                    !navigationOpen ? "w-full! delay-300" : "w-0"
-                  }`}
-                ></span>
-                <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
-                    !navigationOpen ? "delay-400 w-full!" : "w-0"
-                  }`}
-                ></span>
-                <span
-                  className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
-                    !navigationOpen ? "w-full! delay-500" : "w-0"
-                  }`}
-                ></span>
+          {/* --- DEĞİŞİKLİK BAŞLANGICI 1: Dil Butonunu Buraya Taşıyoruz --- */}
+          <div className="flex items-center gap-4 xl:hidden">
+            {/* Sadece mobilde burada görünsün diye xl:hidden ekleyebilirsin, 
+                ama her zaman logo yanında olsun istersen kaldırman yeterli. 
+                Şimdilik sadece mobilde butonun soluna koyuyoruz. */}
+            <LanguageSwitcher />
+
+            {/* Hamburger Toggle BTN */}
+            <button
+              aria-label="hamburger Toggler"
+              className="block xl:hidden"
+              onClick={() => setNavigationOpen(!navigationOpen)}
+            >
+              <span className="relative block h-5.5 w-5.5 cursor-pointer">
+                <span className="absolute right-0 block h-full w-full">
+                  <span
+                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-0 duration-200 ease-in-out dark:bg-white ${
+                      !navigationOpen ? "w-full! delay-300" : "w-0"
+                    }`}
+                  ></span>
+                  <span
+                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-150 duration-200 ease-in-out dark:bg-white ${
+                      !navigationOpen ? "delay-400 w-full!" : "w-0"
+                    }`}
+                  ></span>
+                  <span
+                    className={`relative left-0 top-0 my-1 block h-0.5 rounded-sm bg-black delay-200 duration-200 ease-in-out dark:bg-white ${
+                      !navigationOpen ? "w-full! delay-500" : "w-0"
+                    }`}
+                  ></span>
+                </span>
+                <span className="du-block absolute right-0 h-full w-full rotate-45">
+                  <span
+                    className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
+                      !navigationOpen ? "h-0! delay-0" : "h-full"
+                    }`}
+                  ></span>
+                  <span
+                    className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
+                      !navigationOpen ? "h-0! delay-200" : "h-0.5"
+                    }`}
+                  ></span>
+                </span>
               </span>
-              <span className="du-block absolute right-0 h-full w-full rotate-45">
-                <span
-                  className={`absolute left-2.5 top-0 block h-full w-0.5 rounded-sm bg-black delay-300 duration-200 ease-in-out dark:bg-white ${
-                    !navigationOpen ? "h-0! delay-0" : "h-full"
-                  }`}
-                ></span>
-                <span
-                  className={`delay-400 absolute left-0 top-2.5 block h-0.5 w-full rounded-sm bg-black duration-200 ease-in-out dark:bg-white ${
-                    !navigationOpen ? "h-0! delay-200" : "h-0.5"
-                  }`}
-                ></span>
-              </span>
-            </span>
-          </button>
-          {/* <!-- Hamburger Toggle BTN --> */}
+            </button>
+          </div>
+          {/* --- DEĞİŞİKLİK BİTİŞİ 1 --- */}
+
         </div>
 
         {/* Nav Menu Start   */}
@@ -154,7 +163,14 @@ const Header = () => {
 
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
             <ThemeToggler />
-            <LanguageSwitcher />
+            
+            {/* --- DEĞİŞİKLİK BAŞLANGICI 2: Menü içindekini mobilde gizliyoruz --- */}
+            {/* Masaüstünde (xl) görünsün, mobilde gizlensin çünkü yukarı taşıdık */}
+            <div className="hidden xl:block">
+               <LanguageSwitcher />
+            </div>
+            {/* --- DEĞİŞİKLİK BİTİŞİ 2 --- */}
+
             <Link
               href="https://github.com/NextJSTemplates/solid-nextjs"
               className="text-regular font-medium text-waterloo hover:text-primary"
@@ -174,7 +190,5 @@ const Header = () => {
     </header>
   );
 };
-
-// w-full delay-300
 
 export default Header;

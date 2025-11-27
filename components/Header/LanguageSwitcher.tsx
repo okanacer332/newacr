@@ -1,73 +1,101 @@
 "use client";
-
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/routing"; // @ alias'ı tsconfig'de tanımlı
-import { useState, useTransition } from "react";
+import { usePathname, useRouter, routing } from "@/i18n/routing"; // routing'i buradan çekiyoruz
+import { useState, useRef, useEffect } from "react";
 
-export default function LanguageSwitcher() {
-  const [isPending, startTransition] = useTransition();
-  const locale = useLocale();
+const LanguageSwitcher = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const locale = useLocale(); // Şu anki aktif dil
   const router = useRouter();
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const trigger = useRef<any>(null);
+  const dropdown = useRef<any>(null);
 
+  // Dil verileri: Bayraklar ve etiketler
+  const languages = {
+    tr: { label: "TR", flag: "🇹🇷", longName: "Turkish" },
+    en: { label: "EN", flag: "🇺🇸", longName: "English" },
+  };
+
+  // Dropdown dışına tıklanırsa kapat
+  useEffect(() => {
+    const clickHandler = ({ target }: MouseEvent) => {
+      if (!dropdown.current) return;
+      if (
+        !dropdownOpen ||
+        dropdown.current.contains(target) ||
+        trigger.current.contains(target)
+      )
+        return;
+      setDropdownOpen(false);
+    };
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  }, [dropdownOpen]);
+
+  // Dil değiştirme fonksiyonu
   const handleLanguageChange = (nextLocale: string) => {
-    setIsOpen(false);
-    startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
-    });
+    router.replace(pathname, { locale: nextLocale });
+    setDropdownOpen(false);
   };
 
   return (
-    <div className="relative ml-4">
+    <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-dark hover:text-primary dark:text-white dark:hover:text-primary transition-colors duration-300"
+        ref={trigger}
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+        className="flex items-center gap-2 font-medium text-black dark:text-white hover:text-primary transition-colors duration-300"
       >
-        <span className="uppercase">{locale}</span>
+        {/* Aktif dilin bayrağı ve kısaltması */}
+        <span className="text-xl">{languages[locale as keyof typeof languages].flag}</span>
+        <span>{languages[locale as keyof typeof languages].label}</span>
+        
+        {/* Aşağı ok ikonu */}
         <svg
-          className={`w-4 h-4 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
+          className={`h-4 w-4 fill-current transition-transform duration-200 ${
+            dropdownOpen ? "rotate-180" : ""
           }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+          viewBox="0 0 20 20"
         >
           <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
+            fillRule="evenodd"
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            clipRule="evenodd"
           />
         </svg>
       </button>
 
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-24 bg-white dark:bg-dark-2 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-1 z-50">
-          <button
-            onClick={() => handleLanguageChange("en")}
-            disabled={isPending}
-            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 ${
-              locale === "en"
-                ? "text-primary font-bold"
-                : "text-gray-700 dark:text-gray-300"
-            }`}
-          >
-            English
-          </button>
-          <button
-            onClick={() => handleLanguageChange("tr")}
-            disabled={isPending}
-            className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 ${
-              locale === "tr"
-                ? "text-primary font-bold"
-                : "text-gray-700 dark:text-gray-300"
-            }`}
-          >
-            Türkçe
-          </button>
+      {/* Açılır Menü */}
+      <div
+        ref={dropdown}
+        onFocus={() => setDropdownOpen(true)}
+        onBlur={() => setDropdownOpen(false)}
+        className={`absolute right-0 mt-2 w-32 rounded-md border border-stroke bg-white p-2 shadow-solid-12 dark:border-strokedark dark:bg-black ${
+          dropdownOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-2 opacity-0"
+        } transition-all duration-300 z-50`}
+      >
+        <div className="flex flex-col gap-1">
+          {/* routing.locales üzerinden dönerek listeyi oluşturuyoruz (tr önce gelir) */}
+          {routing.locales.map((cur) => (
+            <button
+              key={cur}
+              onClick={() => handleLanguageChange(cur)}
+              className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-all duration-300 hover:bg-gray-100 dark:hover:bg-hoverdark ${
+                locale === cur
+                  ? "bg-gray-100 dark:bg-hoverdark text-primary font-semibold"
+                  : "text-black dark:text-white"
+              }`}
+            >
+              <span className="text-xl">{languages[cur as keyof typeof languages].flag}</span>
+              <span>{languages[cur as keyof typeof languages].longName}</span>
+            </button>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
-}
+};
+
+export default LanguageSwitcher;
