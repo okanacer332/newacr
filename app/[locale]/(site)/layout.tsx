@@ -1,11 +1,12 @@
 "use client";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "next-themes";
-import "../../globals.css"; // KESİN YOL: app/[locale]/(site) -> app/globals.css
-import ToasterContext from "../../context/ToastContext"; // KESİN YOL: app/[locale]/(site) -> app/context
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import { Toaster } from "react-hot-toast";
+import { ViewModeProvider } from "@/app/context/ViewModeContext"; // Yeni import
+import "../../globals.css";
 
 export default function SiteLayout({
   children,
@@ -13,12 +14,14 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider attribute="class" enableSystem={false} defaultTheme="light">
-      <ToasterContext />
-      <Header />
-      {children}
-      <Footer />
-      <ScrollToTop />
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+      <ViewModeProvider> {/* Provider'ı buraya ekledik */}
+        <Header />
+        <Toaster />
+        {children}
+        <Footer />
+        <ScrollToTop />
+      </ViewModeProvider>
     </ThemeProvider>
   );
 }
