@@ -14,7 +14,7 @@ import Blog from "@/components/Blog";
 import Testimonial from "@/components/Testimonial";
 
 export const metadata: Metadata = {
-  title: "AcrTech",
+  title: "MELOSPOR",
 
   // other metadata
   description: "ACRTECH olarak işletmenizin dijital ikizini oluşturuyoruz. Sahadaki veriyi finansal zekaya dönüştüren uçtan uca ekosistem."
