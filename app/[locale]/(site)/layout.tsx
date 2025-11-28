@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
-import { ViewModeProvider } from "@/app/context/ViewModeContext"; // Yeni import
+import { ViewModeProvider } from "@/app/context/ViewModeContext";
 import "../../globals.css";
 
 export default function SiteLayout({
@@ -14,8 +14,9 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-      <ViewModeProvider> {/* Provider'ı buraya ekledik */}
+    // DEĞİŞİKLİK BURADA: defaultTheme="dark" yaptık.
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <ViewModeProvider>
         <Header />
         <Toaster />
         {children}
