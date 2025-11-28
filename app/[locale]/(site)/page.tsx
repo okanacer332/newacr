@@ -1,41 +1,26 @@
 import { Metadata } from "next";
 import Hero from "@/components/Hero";
-import Brands from "@/components/Brands";
-import Feature from "@/components/Features";
-import About from "@/components/About";
-import FeaturesTab from "@/components/FeaturesTab";
-import FunFact from "@/components/FunFact";
-import Integration from "@/components/Integration";
-import CTA from "@/components/CTA";
-import FAQ from "@/components/FAQ";
-import Pricing from "@/components/Pricing";
-import Contact from "@/components/Contact";
-import Blog from "@/components/Blog";
-import Testimonial from "@/components/Testimonial";
+import Services from "@/components/Services"; // Yeni
+import Features from "@/components/Features"; // Güncellendi
+import CTA from "@/components/CTA"; // Güncellendi
+import Testimonial from "@/components/Testimonial"; // Mevcut (Varsa)
+// Diğer importlar...
 
 export const metadata: Metadata = {
-  title: "MELOSPOR",
-
-  // other metadata
-  description: "ACRTECH olarak işletmenizin dijital ikizini oluşturuyoruz. Sahadaki veriyi finansal zekaya dönüştüren uçtan uca ekosistem."
+  title: "AcrTech - Geleceği Bugünden Kodluyoruz",
+  description: "ACRTECH olarak işletmenizin dijital ikizini oluşturuyoruz.",
 };
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Brands />
-      <Feature />
-      <About />
-      <FeaturesTab />
-      <FunFact />
-      <Integration />
+      <Services />
+      <Features />
+      {/* İstersen araya FunFact, Brands gibi küçük componentleri de ekleyebilirsin */}
+      <Testimonial /> 
       <CTA />
-      <FAQ />
-      <Testimonial />
-      <Pricing />
-      <Contact />
-      <Blog />
+      {/* <Contact /> Contact'ı CTA içinde linkledik ama form olarak sayfa sonunda da durabilir */}
     </main>
   );
 }
