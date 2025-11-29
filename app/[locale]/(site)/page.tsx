@@ -4,7 +4,7 @@ import Services from "@/components/Services"; // Yeni
 import Features from "@/components/Features"; // Güncellendi
 import CTA from "@/components/CTA"; // Güncellendi
 import Testimonial from "@/components/Testimonial"; // Mevcut (Varsa)
-// Diğer importlar...
+import Pricing from "@/components/Pricing";
 
 export const metadata: Metadata = {
   title: "AcrTech - Geleceği Bugünden Kodluyoruz",
@@ -17,10 +17,10 @@ export default function Home() {
       <Hero />
       <Services />
       <Features />
-      {/* İstersen araya FunFact, Brands gibi küçük componentleri de ekleyebilirsin */}
+      {/* Pricing Bölümünü CTA'dan önceye, Testimonial'dan sonraya ekliyorum */}
+      <Pricing />  {/* EKLENDİ: Bileşen */}
       <Testimonial /> 
       <CTA />
-      {/* <Contact /> Contact'ı CTA içinde linkledik ama form olarak sayfa sonunda da durabilir */}
     </main>
   );
 }

@@ -1,10 +1,187 @@
 {
+  "Header": {
+    "designMode": "DESIGN",
+    "codeMode": "CODE",
+    "letsTalk": "Let's Talk",
+    "getInTouch": "Get in Touch",
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "blog": "Blog",
+      "docs": "Docs",
+      "support": "Support",
+      "pages": "Pages"
+    }
+  },
   "Hero": {
-    "tagline": "🔥 ACRTECH - End-to-End Digital Transformation",
-    "title": "Coding the Future Today: Your Business's Digital Twin",
-    "description": "At ACRTECH, we don't just offer technology; we build the digital twin of your business, from your factory floor to your finance department. Don't just manage your business—prepare it for the future. We offer an end-to-end ecosystem that transforms field data into financial intelligence and routine tasks into high performance.",
-    "emailPlaceholder": "Enter your email address",
+    "design": {
+      "badge": "UX-UI Design Agency",
+      "title": "Modern Design Solutions",
+      "subtitle": "We craft exceptional user experiences through customer journey mapping, product UI design, and strategic UX consulting.",
+      "ctaPrimary": "Start Your Project",
+      "ctaSecondary": "View Our Work"
+    },
+    "code": {
+      "badge": "Full-Stack Development",
+      "title": "Next-Gen Engineering",
+      "subtitle": "We build scalable, high-performance systems with cutting-edge code quality and architectural excellence.",
+      "ctaPrimary": "Start Coding",
+      "ctaSecondary": "View GitHub"
+    }
+  },
+  "Features": {
+    "f1": {
+      "design": {
+        "badge": "STRATEGY",
+        "title": "User Journey Mapping",
+        "description": "We analyze every moment your customers interact with your brand. We identify pain points and create strategic maps that turn them into moments of satisfaction.",
+        "list1": "Persona Analysis",
+        "list2": "Touchpoint Optimization",
+        "list3": "Conversion Funnel Design",
+        "imgAlt": "Journey Map"
+      },
+      "code": {
+        "badge": "ARCHITECTURE",
+        "title": "Microservices & Scalability",
+        "description": "We transform monolithic structures into modern microservice architectures for high-traffic systems. Your system is ready for any load with Docker/K8s.",
+        "list1": "Load Balancing",
+        "list2": "Database Sharding",
+        "list3": "High Availability",
+        "imgAlt": "System Diagram"
+      }
+    },
+    "f2": {
+      "design": {
+        "badge": "AESTHETICS",
+        "title": "Modern & Trendy UI Design",
+        "description": "Designs that don't just look good, but feel good. We turn your user interface into a modern work of art with Glassmorphism, 3D elements, and micro-animations.",
+        "imgAlt": "UI Kit"
+      },
+      "code": {
+        "badge": "SECURITY",
+        "title": "Enterprise Data Security (B2B)",
+        "description": "Your data is always safe on your B2B platforms with end-to-end encryption, role-based access control (RBAC), and regular penetration tests.",
+        "imgAlt": "Security Layer"
+      }
+    },
+    "cta": "Explore more"
+  },
+  "Services": {
+    "sectionSubtitle": "Our Expertise",
+    "viewDetails": "View Service Details →",
+    "loadMore": "Load More Services",
+    "showLess": "Show Less",
+    "design": {
+      "title": "Design Expertise",
+      "description": "Comprehensive UX-UI design services focused on creating exceptional user experiences and driving business results.",
+      "items": {
+        "ux": { "title": "UX Consultant", "desc": "Strategic UX guidance to optimize user experiences and drive business growth through data-driven insights." },
+        "product": { "title": "Product Design", "desc": "End-to-end product design from concept to launch, creating intuitive interfaces that users love." },
+        "newBusiness": { "title": "New Business Dev", "desc": "Strategic design thinking to identify opportunities and create compelling digital products for growth." },
+        "journey": { "title": "Customer Journey", "desc": "Visualize and optimize every touchpoint in your customer's journey for maximum engagement." },
+        "crm": { "title": "CRM Marketing", "desc": "Data-driven marketing strategies integrated with design to boost customer retention and loyalty." }
+      }
+    },
+    "code": {
+      "title": "Technical Mastery",
+      "description": "End-to-end engineering solutions for complex technical challenges.",
+      "items": {
+        "architect": { "title": "System Architect", "desc": "Designing robust, scalable back-end architectures." },
+        "fullStack": { "title": "Full-Stack Dev", "desc": "Pixel-perfect frontend meets powerful backend logic." },
+        "database": { "title": "Database Design", "desc": "Optimized schemas for high-performance data handling." },
+        "devops": { "title": "DevOps & Cloud", "desc": "Seamless CI/CD pipelines and cloud infrastructure." },
+        "api": { "title": "API Development", "desc": "Secure and fast RESTful & GraphQL API systems." }
+      }
+    }
+  },
+  "Testimonial": {
+    "title": "TESTIMONIALS",
+    "subtitle": "Client Testimonials",
+    "description": "See what our partners say about our work ethic, design precision, and code quality.",
+    "reviews": {
+      "design": {
+        "1": { "name": "Sarah Jenkins", "designation": "Founder @DesignCo", "content": "The UI/UX design they delivered was absolutely stunning. Our conversion rates increased by 40% after the redesign." },
+        "2": { "name": "Michael Brown", "designation": "Product Owner @TechFlow", "content": "They understood our brand voice perfectly. The user journey maps helped us identify key pain points we missed." },
+        "3": { "name": "Emily Chen", "designation": "Marketing Director @Glow", "content": "Aesthetic, functional, and user-friendly. The best design agency experience we've had so far." },
+        "4": { "name": "David Smith", "designation": "CEO @StartupX", "content": "The visual identity they created for us helped us secure our Series A funding. Incredible work." }
+      },
+      "code": {
+        "1": { "name": "Alex Techson", "designation": "CTO @DevCorp", "content": "Clean code, scalable architecture, and perfect documentation. Their engineering team is top-notch." },
+        "2": { "name": "John Doe", "designation": "Lead Dev @SoftSys", "content": "Migrating to microservices was a breeze with their help. The system performance improved significantly." },
+        "3": { "name": "Jane Developer", "designation": "VP of Engineering @CloudNet", "content": "Secure, fast, and reliable. They built a backend that handles millions of requests without a hiccup." },
+        "4": { "name": "Chris Server", "designation": "DevOps Manager @OpsLife", "content": "The CI/CD pipelines they set up saved us hours of manual work every week. Highly recommended." }
+      }
+    }
+  },
+  "Pricing": {
+    "title": "PRICING PLANS",
+    "subtitle": "Choose Your Plan",
+    "description": "Flexible pricing options tailored to your needs. Whether you need design perfection or code scalability.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "perMonth": "/mo",
+    "perYear": "/yr",
     "getStarted": "Get Started",
-    "tryForFree": "Try for free, no credit card required."
+    "plans": {
+      "design": {
+        "basic": { "title": "Freelancer", "price": "49", "desc": "Perfect for individual designers." },
+        "pro": { "title": "Agency", "price": "99", "desc": "For growing design teams." },
+        "enterprise": { "title": "Enterprise", "price": "199", "desc": "Full-scale design system management." }
+      },
+      "code": {
+        "basic": { "title": "Starter", "price": "29", "desc": "For hobby projects and MVPs." },
+        "pro": { "title": "Pro SaaS", "price": "79", "desc": "Everything you need to scale." },
+        "enterprise": { "title": "Team", "price": "149", "desc": "Advanced security and support." }
+      }
+    }
+  },
+  "CTA": {
+    "design": {
+      "title": "Ready to Transform Your Brand?",
+      "description": "Join 500+ companies that trusted us with their design journey. Let's create something unique together.",
+      "button": "Start Design Project"
+    },
+    "code": {
+      "title": "Ready to Scale Your Systems?",
+      "description": "Let's build the robust, high-performance infrastructure your business needs to grow without limits.",
+      "button": "Start Engineering"
+    },
+    "viewPortfolio": "View Portfolio"
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "Get In Touch",
+    "description": "Have a project in mind or want to discuss technical details? We are here to help you build the future.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "subject": "Subject",
+      "phone": "Phone Number",
+      "message": "Your Message",
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Find Us",
+      "email": "Email",
+      "phone": "Phone Number",
+      "address": "Address",
+      "addressValue": "Teknopark Istanbul, Turkey"
+    }
+  },
+  "Footer": {
+    "description": "We craft digital experiences that merge art with technology. Your vision, our innovation.",
+    "quickLinks": "Quick Links",
+    "support": "Support",
+    "newsletter": {
+      "title": "Newsletter",
+      "subtitle": "Subscribe to receive future updates",
+      "placeholder": "Email address",
+      "button": "Subscribe"
+    },
+    "copyright": "© {year} ACRTECH. All rights reserved.",
+    "contact": {
+      "email": "Email",
+      "phone": "Phone"
+    }
   }
 }

@@ -1,10 +1,187 @@
 {
+  "Header": {
+    "designMode": "TASARIM",
+    "codeMode": "KOD",
+    "letsTalk": "Konuşalım",
+    "getInTouch": "İletişime Geç",
+    "menu": {
+      "home": "Anasayfa",
+      "about": "Hakkımızda",
+      "blog": "Blog",
+      "docs": "Dökümanlar",
+      "support": "Destek",
+      "pages": "Sayfalar"
+    }
+  },
   "Hero": {
-    "tagline": "🔥 ACRTECH - Uçtan Uca Dijital Dönüşüm",
-    "title": "Geleceği Bugünden Kodluyoruz: İşletmenizin Dijital İkizi",
-    "description": "ACRTECH olarak salt bir teknoloji sunumuyla yetinmiyor; fabrikanızdan finansınıza kadar işletmenizin dijital ikizini oluşturuyoruz. İşletmenizi sadece yönetmeyin, onu geleceğe hazırlayın. Biz, sahadaki veriyi finansal zekaya, rutin işleri ise yüksek performansa dönüştüren uçtan uca bir ekosistem sunuyoruz.",
-    "emailPlaceholder": "E-posta adresinizi girin",
-    "getStarted": "Hemen Başlayın",
-    "tryForFree": "Ücretsiz deneyin, kredi kartı gerekmez."
+    "design": {
+      "badge": "UX-UI Tasarım Ajansı",
+      "title": "Modern Tasarım Çözümleri",
+      "subtitle": "Müşteri yolculuğu haritalama, ürün arayüz tasarımı ve stratejik UX danışmanlığı ile olağanüstü deneyimler yaratıyoruz.",
+      "ctaPrimary": "Projeye Başla",
+      "ctaSecondary": "İşlerimizi Gör"
+    },
+    "code": {
+      "badge": "Full-Stack Geliştirme",
+      "title": "Yeni Nesil Mühendislik",
+      "subtitle": "En son kod kalitesi ve mimari mükemmellikle ölçeklenebilir, yüksek performanslı sistemler inşa ediyoruz.",
+      "ctaPrimary": "Kodlamaya Başla",
+      "ctaSecondary": "GitHub'a Git"
+    }
+  },
+  "Features": {
+    "f1": {
+      "design": {
+        "badge": "STRATEJİ",
+        "title": "Kullanıcı Yolculuğu Haritalama",
+        "description": "Müşterilerinizin markanızla etkileşime girdiği her anı analiz ediyoruz. Acı noktalarını tespit edip, onları memnuniyet anlarına dönüştüren stratejik haritalar çıkarıyoruz.",
+        "list1": "Persona Analizi",
+        "list2": "Touchpoint Optimizasyonu",
+        "list3": "Dönüşüm Hunisi Tasarımı",
+        "imgAlt": "Journey Map"
+      },
+      "code": {
+        "badge": "MİMARİ",
+        "title": "Mikroservis Mimarisi & Ölçeklenebilirlik",
+        "description": "Yüksek trafikli sistemler için monolitik yapıları modern mikroservis mimarisine dönüştürüyoruz. Konteynerizasyon (Docker/K8s) ile sisteminiz her yüke hazır.",
+        "list1": "Load Balancing",
+        "list2": "Database Sharding",
+        "list3": "High Availability",
+        "imgAlt": "Sistem Diyagramı"
+      }
+    },
+    "f2": {
+      "design": {
+        "badge": "ESTETİK",
+        "title": "Modern & Trend UI Tasarımı",
+        "description": "Sadece güzel görünen değil, hissettiren tasarımlar. Glassmorphism, 3D elementler ve mikro-animasyonlarla kullanıcı arayüzünüzü modern sanat eserine çeviriyoruz.",
+        "imgAlt": "UI Kit"
+      },
+      "code": {
+        "badge": "GÜVENLİK",
+        "title": "Kurumsal Veri Güvenliği (B2B)",
+        "description": "B2B platformlarınızda uçtan uca şifreleme, rol tabanlı erişim kontrolü (RBAC) ve düzenli penetrasyon testleri ile verileriniz her zaman güvende.",
+        "imgAlt": "Güvenlik Katmanı"
+      }
+    },
+    "cta": "Daha fazlasını keşfet"
+  },
+  "Services": {
+    "sectionSubtitle": "Uzmanlık Alanlarımız",
+    "viewDetails": "Hizmet Detaylarını İncele →",
+    "loadMore": "Daha Fazla Hizmet Yükle",
+    "showLess": "Daha Az Göster",
+    "design": {
+      "title": "Tasarım Uzmanlığı",
+      "description": "Olağanüstü kullanıcı deneyimleri yaratmaya ve iş sonuçlarını artırmaya odaklanmış kapsamlı UX-UI tasarım hizmetleri.",
+      "items": {
+        "ux": { "title": "UX Danışmanlığı", "desc": "Veri odaklı içgörülerle kullanıcı deneyimlerini optimize etmek ve iş büyümesini sağlamak için stratejik UX rehberliği." },
+        "product": { "title": "Ürün Tasarımı", "desc": "Konseptten lansmana kadar, kullanıcıların sevdiği sezgisel arayüzler yaratan uçtan uca ürün tasarımı." },
+        "newBusiness": { "title": "Yeni İş Geliştirme", "desc": "Fırsatları belirlemek ve büyüme için etkileyici dijital ürünler oluşturmak adına stratejik tasarım odaklı düşünme." },
+        "journey": { "title": "Müşteri Yolculuğu", "desc": "Maksimum etkileşim için müşterinizin yolculuğundaki her temas noktasını görselleştirin ve optimize edin." },
+        "crm": { "title": "CRM Pazarlama", "desc": "Müşteri sadakatini artırmak için tasarımla bütünleşmiş veri odaklı pazarlama stratejileri." }
+      }
+    },
+    "code": {
+      "title": "Teknik Ustalık",
+      "description": "Karmaşık teknik zorluklar için uçtan uca mühendislik çözümleri.",
+      "items": {
+        "architect": { "title": "Sistem Mimarı", "desc": "Sağlam, ölçeklenebilir arka uç (back-end) mimarileri tasarlama." },
+        "fullStack": { "title": "Full-Stack Geliştirme", "desc": "Piksel mükemmelliğinde frontend ile güçlü backend mantığının buluşması." },
+        "database": { "title": "Veritabanı Tasarımı", "desc": "Yüksek performanslı veri işleme için optimize edilmiş şemalar." },
+        "devops": { "title": "DevOps & Cloud", "desc": "Kesintisiz CI/CD süreçleri ve bulut altyapısı." },
+        "api": { "title": "API Geliştirme", "desc": "Güvenli ve hızlı RESTful & GraphQL API sistemleri." }
+      }
+    }
+  },
+  "Testimonial": {
+    "title": "REFERANSLAR",
+    "subtitle": "Müşteri Yorumları",
+    "description": "İş ahlakımız, tasarım hassasiyetimiz ve kod kalitemiz hakkında iş ortaklarımızın söylediklerine göz atın.",
+    "reviews": {
+      "design": {
+        "1": { "name": "Sarah Jenkins", "designation": "Kurucu @DesignCo", "content": "Teslim ettikleri UI/UX tasarımı kesinlikle büyüleyiciydi. Yeniden tasarımdan sonra dönüşüm oranlarımız %40 arttı." },
+        "2": { "name": "Michael Brown", "designation": "Ürün Sahibi @TechFlow", "content": "Marka sesimizi mükemmel anladılar. Kullanıcı yolculuğu haritaları, kaçırdığımız kilit sorunları görmemizi sağladı." },
+        "3": { "name": "Emily Chen", "designation": "Pazarlama Direktörü @Glow", "content": "Estetik, işlevsel ve kullanıcı dostu. Şimdiye kadar çalıştığımız en iyi tasarım ajansı." },
+        "4": { "name": "David Smith", "designation": "CEO @StartupX", "content": "Bizim için oluşturdukları görsel kimlik, Seri A yatırımımızı almamıza yardımcı oldu. İnanılmaz iş." }
+      },
+      "code": {
+        "1": { "name": "Alex Techson", "designation": "CTO @DevCorp", "content": "Temiz kod, ölçeklenebilir mimari ve mükemmel dökümantasyon. Mühendislik ekipleri birinci sınıf." },
+        "2": { "name": "John Doe", "designation": "Yazılım Lideri @SoftSys", "content": "Mikroservislere geçiş, onların yardımıyla çocuk oyuncağıydı. Sistem performansı önemli ölçüde arttı." },
+        "3": { "name": "Jane Developer", "designation": "Mühendislik VP @CloudNet", "content": "Güvenli, hızlı ve güvenilir. Milyonlarca isteği sorunsuz işleyen bir backend kurdular." },
+        "4": { "name": "Chris Server", "designation": "DevOps Müdürü @OpsLife", "content": "Kurdukları CI/CD süreçleri bizi her hafta saatlerce manuel işten kurtardı. Kesinlikle tavsiye ederim." }
+      }
+    }
+  },
+  "Pricing": {
+    "title": "FİYATLANDIRMA",
+    "subtitle": "Planını Seç",
+    "description": "İhtiyaçlarınıza özel esnek fiyatlandırma seçenekleri. İster tasarım mükemmelliği, ister kod ölçeklenebilirliği.",
+    "monthly": "Aylık",
+    "yearly": "Yıllık",
+    "perMonth": "/ay",
+    "perYear": "/yıl",
+    "getStarted": "Hemen Başla",
+    "plans": {
+      "design": {
+        "basic": { "title": "Freelancer", "price": "49", "desc": "Bireysel tasarımcılar için mükemmel." },
+        "pro": { "title": "Ajans", "price": "99", "desc": "Büyüyen tasarım ekipleri için." },
+        "enterprise": { "title": "Kurumsal", "price": "199", "desc": "Tam kapsamlı tasarım sistemi yönetimi." }
+      },
+      "code": {
+        "basic": { "title": "Başlangıç", "price": "29", "desc": "Hobi projeleri ve MVP'ler için." },
+        "pro": { "title": "Pro SaaS", "price": "79", "desc": "Ölçeklenmek için ihtiyacınız olan her şey." },
+        "enterprise": { "title": "Takım", "price": "149", "desc": "Gelişmiş güvenlik ve destek." }
+      }
+    }
+  },
+  "CTA": {
+    "design": {
+      "title": "Markanızı Dönüştürmeye Hazır mısınız?",
+      "description": "Tasarım yolculuklarında bize güvenen 500+ şirkete katılın. Birlikte eşsiz bir şeyler yaratalım.",
+      "button": "Tasarım Projesine Başla"
+    },
+    "code": {
+      "title": "Sistemlerinizi Ölçeklemeye Hazır mısınız?",
+      "description": "İşletmenizin sınırsız büyümesi için ihtiyaç duyduğu sağlam ve yüksek performanslı altyapıyı kuralım.",
+      "button": "Mühendisliğe Başla"
+    },
+    "viewPortfolio": "Portfolyoyu İncele"
+  },
+  "Contact": {
+    "title": "Bize Ulaşın",
+    "subtitle": "İletişime Geç",
+    "description": "Aklınızda bir proje mi var yoksa teknik detayları mı konuşmak istiyorsunuz? Geleceği inşa etmenize yardım etmek için buradayız.",
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta Adresi",
+      "subject": "Konu",
+      "phone": "Telefon Numarası",
+      "message": "Mesajınız",
+      "submit": "Mesaj Gönder"
+    },
+    "info": {
+      "title": "Bizi Bulun",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "address": "Adres",
+      "addressValue": "Teknopark İstanbul, Türkiye"
+    }
+  },
+  "Footer": {
+    "description": "Sanatı teknolojiyle buluşturan dijital deneyimler tasarlıyoruz. Sizin vizyonunuz, bizim inovasyonumuz.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "support": "Destek",
+    "newsletter": {
+      "title": "Bülten",
+      "subtitle": "Gelişmelerden haberdar olmak için abone olun",
+      "placeholder": "E-posta adresi",
+      "button": "Abone Ol"
+    },
+    "copyright": "© {year} ACRTECH. Tüm hakları saklıdır.",
+    "contact": {
+      "email": "E-posta",
+      "phone": "Telefon"
+    }
   }
 }

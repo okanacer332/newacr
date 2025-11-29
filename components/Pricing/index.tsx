@@ -1,146 +1,150 @@
 "use client";
+import { useState } from "react";
+import SectionHeader from "../Common/SectionHeader";
 import { useViewMode } from "@/app/context/ViewModeContext";
+import { useTranslations } from "next-intl";
 
 const Pricing = () => {
+  const t = useTranslations("Pricing");
   const { mode } = useViewMode();
   const isDesign = mode === "design";
+  const modeKey = isDesign ? "design" : "code";
 
+  const [isMonthly, setIsMonthly] = useState(true);
+
+  // Tema Renkleri
+  const theme = {
+    activeBtn: isDesign ? "bg-purple-600 text-white" : "bg-blue-600 text-white",
+    inactiveBtn: "text-black dark:text-white",
+    cardBorder: isDesign 
+      ? "border-purple-100 dark:border-strokedark hover:border-purple-400 dark:hover:border-purple-400" 
+      : "border-stroke dark:border-strokedark hover:border-primary dark:hover:border-primary",
+    badge: isDesign ? "text-purple-600 bg-purple-100" : "text-primary bg-primary/10",
+    btn: isDesign 
+      ? "border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white" 
+      : "border-primary text-primary hover:bg-primary hover:text-white",
+    // SVG Shape Rengi (Opsiyonel)
+    shape: isDesign ? "/images/shape/shape-dotted-light.svg" : "/images/shape/shape-dotted-light.svg"
+  };
+
+  // Plan Verileri (Statik özellikler + Dinamik Metinler)
   const plans = [
     {
-      name: "Starter",
-      subtitle: "Best for Small Projects",
-      price: "$2,500",
-      period: "/project",
-      desc: "Perfect for startups and small businesses looking to establish their design foundation.",
-      features: [
-        "UI/UX Design Consultation",
-        "Wireframing & Prototyping",
-        "Up to 5 Page Designs",
-        "Basic Brand Guidelines",
-        "2 Revision Rounds",
-        "Email Support"
-      ],
-      popular: false
+      id: "basic",
+      icon: isDesign ? "🎨" : "⚡",
+      features: isDesign 
+        ? ["UI Kit Access", "5 Projects", "Basic Assets", "Community Support"] 
+        : ["Next.js Starter", "1 Domain", "Basic DB", "Community Support"],
     },
     {
-      name: "Professional",
-      subtitle: "Most Popular",
-      price: "$5,000",
-      period: "/project",
-      desc: "Ideal for growing businesses that need comprehensive design solutions.",
-      features: [
-        "Everything in Starter",
-        "Customer Journey Mapping",
-        "Up to 15 Page Designs",
-        "Complete Design System",
-        "Interactive Prototypes",
-        "Unlimited Revisions",
-        "Priority Support",
-        "User Testing Session"
-      ],
-      popular: true
+      id: "pro",
+      icon: isDesign ? "💎" : "🚀",
+      popular: true,
+      features: isDesign 
+        ? ["Full Design System", "Unlimited Projects", "Premium Assets", "Priority Support"] 
+        : ["SaaS Template", "Unlimited Domains", "Advanced DB", "Priority Support"],
     },
     {
-      name: "Enterprise",
-      subtitle: "For Large Teams",
-      price: "$10,000+",
-      period: "/project",
-      desc: "Comprehensive design partnership for established companies and complex projects.",
-      features: [
-        "Everything in Professional",
-        "Full Product Design",
-        "Unlimited Page Designs",
-        "CRM Marketing Strategy",
-        "New Business Development",
-        "Design Team Training",
-        "Dedicated Designer",
-        "24/7 Priority Support"
-      ],
-      popular: false
+      id: "enterprise",
+      icon: isDesign ? "👑" : "🏢",
+      features: isDesign 
+        ? ["Custom Components", "Team Collaboration", "Asset Management", "24/7 Support"] 
+        : ["White Label", "Self-Hosted", "Audit Logs", "Dedicated Support"],
     }
   ];
 
-  const theme = {
-    highlight: isDesign ? "text-purple-600" : "text-blue-600",
-    btnPrimary: isDesign ? "bg-purple-600 hover:bg-purple-700" : "bg-blue-600 hover:bg-blue-700",
-    popularTag: isDesign ? "bg-purple-600" : "bg-blue-600",
-    checkIcon: isDesign ? "text-purple-500" : "text-blue-500"
-  };
-
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-white">Choose Your Plan</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            Flexible design packages tailored to your project needs and budget.
-          </p>
+    <section className="overflow-hidden pb-20 pt-15 lg:pb-25 xl:pb-30">
+      <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
+        
+        {/* Başlık */}
+        <div className="animate_top mx-auto text-center">
+          <SectionHeader
+            headerInfo={{
+              title: t("title"),
+              subtitle: t("subtitle"),
+              description: t("description"),
+            }}
+          />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {plans.map((plan, index) => (
-            <div 
-              key={index} 
-              className={`relative flex flex-col rounded-2xl border p-6 sm:p-8 shadow-lg bg-white dark:bg-black/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
-                plan.popular 
-                  ? `border-2 ${isDesign ? "border-purple-500" : "border-blue-500"} z-10 scale-105 sm:scale-100 lg:scale-105` 
-                  : "border-gray-200 dark:border-gray-800"
-              }`}
+        {/* Aylık/Yıllık Switch */}
+        <div className="animate_top mt-15 flex justify-center space-x-4">
+          <span className="font-medium text-black dark:text-white">{t("monthly")}</span>
+          <button
+            aria-label="toggle pricing"
+            onClick={() => setIsMonthly(!isMonthly)}
+            className={`relative h-8 w-14 rounded-full bg-gray-200 duration-200 dark:bg-[#3d4257]`}
+          >
+            <div
+              className={`absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition-all duration-300 ${
+                !isMonthly ? "translate-x-6" : ""
+              } ${isDesign ? "shadow-purple-400" : "shadow-blue-400"} shadow-sm`}
+            ></div>
+          </button>
+          <span className="font-medium text-black dark:text-white">{t("yearly")}</span>
+        </div>
+      </div>
+
+      {/* Fiyat Kartları */}
+      <div className="mx-auto mt-15 max-w-[1207px] px-4 md:px-8 xl:mt-20 xl:px-0">
+        <div className="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-12.5">
+          
+          {plans.map((plan) => (
+            <div
+              key={plan.id}
+              className={`animate_top group relative rounded-lg border bg-white p-7.5 shadow-solid-10 transition-all hover:shadow-solid-4 dark:bg-blacksection dark:shadow-none xl:p-12.5 ${theme.cardBorder}`}
             >
-              {/* Popular Tag - Fixed Positioning */}
               {plan.popular && (
-                <div className={`absolute top-0 right-0 rounded-bl-xl rounded-tr-lg px-4 py-1.5 text-xs font-bold text-white shadow-md ${theme.popularTag}`}>
-                  MOST POPULAR
+                <div className={`absolute -right-3.5 top-7.5 -rotate-90 rounded-bl-full rounded-tl-full px-4.5 py-1.5 text-metatitle font-medium uppercase text-white ${isDesign ? "bg-purple-600" : "bg-primary"}`}>
+                  Popular
                 </div>
               )}
 
-              <div className="mb-4">
-                <span className={`text-sm font-bold uppercase tracking-wider ${theme.highlight}`}>
-                  {plan.subtitle}
+              <div className="mb-8 text-center">
+                <div className={`mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full text-3xl bg-gray-50 dark:bg-black`}>
+                  {plan.icon}
+                </div>
+                <h3 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
+                  {t(`plans.${modeKey}.${plan.id}.title`)}
+                </h3>
+                <p>{t(`plans.${modeKey}.${plan.id}.desc`)}</p>
+              </div>
+
+              <div className="mb-9 flex justify-center text-center">
+                <span className="text-metatitle2 font-bold text-black dark:text-white">
+                  $
                 </span>
-                <h3 className="mt-2 text-2xl font-bold text-black dark:text-white">{plan.name}</h3>
+                <span className="text-5xl font-bold text-black dark:text-white pl-1">
+                  {t(`plans.${modeKey}.${plan.id}.price`)}
+                </span>
+                <span className="text-regular font-medium self-end pb-2 opacity-60">
+                  {isMonthly ? t("perMonth") : t("perYear")}
+                </span>
               </div>
 
-              <div className="mb-6 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-black dark:text-white">{plan.price}</span>
-                <span className="text-gray-500">{plan.period}</span>
+              <div className="mb-9 border-b border-stroke pb-9 dark:border-strokedark">
+                <ul className="flex flex-col gap-4">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-3 text-regular font-medium text-black dark:text-manatee">
+                      <span className={`flex h-5 w-5 items-center justify-center rounded-full text-xs text-white ${isDesign ? "bg-purple-500" : "bg-primary"}`}>
+                        ✓
+                      </span>
+                      {feature} 
+                      {/* İstersen özellikleri de çeviriye ekleyebilirsin, şimdilik statik bıraktım */}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <p className="mb-8 text-sm text-gray-600 dark:text-gray-400 border-b border-gray-100 dark:border-gray-800 pb-6">
-                {plan.desc}
-              </p>
-
-              <ul className="mb-8 space-y-4 flex-1">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm font-medium text-gray-700 dark:text-gray-300">
-                    <svg className={`h-5 w-5 shrink-0 ${theme.checkIcon}`} viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="leading-snug">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex flex-col gap-3 mt-auto">
-                <button className={`w-full rounded-full py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-xl ${theme.btnPrimary}`}>
-                  Hire for {plan.name}
-                </button>
-                <button className="w-full rounded-full border border-gray-200 bg-transparent py-3.5 text-sm font-bold text-black dark:border-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all">
-                  View Details
-                </button>
-              </div>
-              
-              <div className={`mt-4 text-center text-xs font-semibold cursor-pointer hover:underline ${theme.highlight}`}>
-                 Learn more about this plan →
-              </div>
+              <button
+                className={`flex w-full items-center justify-center rounded-md border-2 px-4 py-3 text-regular font-medium transition-all duration-300 ${theme.btn}`}
+              >
+                {t("getStarted")}
+              </button>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-12 text-center">
-           <p className="text-gray-600 dark:text-gray-400">
-             Need a custom solution? <a href="/contact" className={`font-bold underline ${theme.highlight}`}>Contact us</a> for a tailored quote.
-           </p>
+
         </div>
       </div>
     </section>

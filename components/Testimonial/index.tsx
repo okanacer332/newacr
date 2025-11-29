@@ -1,32 +1,45 @@
 "use client";
 import SectionHeader from "../Common/SectionHeader";
-
 import { Autoplay, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import { motion } from "framer-motion";
 import SingleTestimonial from "./SingleTestimonial";
 import { testimonialData } from "./testimonialData";
+import { useTranslations } from "next-intl"; // EKLENDİ
+import { useViewMode } from "@/app/context/ViewModeContext"; // EKLENDİ
 
 const Testimonial = () => {
+  const t = useTranslations("Testimonial");
+  const { mode } = useViewMode();
+  const isDesign = mode === "design";
+  const modeKey = isDesign ? "design" : "code";
+
+  // Veriyi dinamik oluştur: Resimler sabit dosyadan + Metinler JSON'dan
+  const dynamicTestimonials = testimonialData.map((item) => ({
+    ...item,
+    name: t(`reviews.${modeKey}.${item.id}.name`),
+    designation: t(`reviews.${modeKey}.${item.id}.designation`),
+    content: t(`reviews.${modeKey}.${item.id}.content`),
+  }));
+
   return (
     <>
       <section>
         <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
-          {/* <!-- Section Title Start --> */}
+          {/* */}
           <div className="animate_top mx-auto text-center">
             <SectionHeader
               headerInfo={{
-                title: `TESTIMONIALS`,
-                subtitle: `Client’s Testimonials`,
-                description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
+                title: t("title"),
+                subtitle: t("subtitle"),
+                description: t("description"),
               }}
             />
           </div>
-          {/* <!-- Section Title End --> */}
+          {/* */}
         </div>
 
         <motion.div
@@ -47,9 +60,9 @@ const Testimonial = () => {
           viewport={{ once: true }}
           className="animate_top mx-auto mt-15 max-w-c-1235 px-4 md:px-8 xl:mt-20 xl:px-0"
         >
-          {/* <!-- Slider main container --> */}
+          {/* */}
           <div className="swiper testimonial-01 mb-20 pb-22.5">
-            {/* <!-- Additional required wrapper --> */}
+            {/* */}
             <Swiper
               spaceBetween={50}
               slidesPerView={2}
@@ -72,7 +85,7 @@ const Testimonial = () => {
                 },
               }}
             >
-              {testimonialData.map((review) => (
+              {dynamicTestimonials.map((review) => (
                 <SwiperSlide key={review?.id}>
                   <SingleTestimonial review={review} />
                 </SwiperSlide>

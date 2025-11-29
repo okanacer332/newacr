@@ -1,10 +1,14 @@
 "use client";
 import { useViewMode } from "@/app/context/ViewModeContext";
-import Image from "next/image";
+import { useTranslations } from "next-intl"; // EKLENDİ
 
 const Features = () => {
+  const t = useTranslations("Features"); // Hook Eklendi
   const { mode } = useViewMode();
   const isDesign = mode === "design";
+  
+  // JSON anahtarına ulaşmak için yardımcı değişken (design veya code)
+  const modeKey = isDesign ? "design" : "code";
 
   const theme = {
     badge: isDesign ? "bg-pink-100 text-pink-700" : "bg-cyan-100 text-cyan-700",
@@ -21,22 +25,22 @@ const Features = () => {
           {/* Sol: İçerik */}
           <div className="lg:w-1/2 order-2 lg:order-1">
              <span className={`inline-block px-3 py-1 mb-4 text-xs font-semibold rounded-full ${theme.badge}`}>
-               {isDesign ? "STRATEGY" : "ARCHITECTURE"}
+               {/* Çeviri: f1.[design/code].badge */}
+               {t(`f1.${modeKey}.badge`)}
              </span>
              <h3 className="text-3xl font-bold mb-6 text-black dark:text-white sm:text-4xl">
-               {isDesign ? "Kullanıcı Yolculuğu Haritalama" : "Mikroservis Mimarisi & Ölçeklenebilirlik"}
+               {t(`f1.${modeKey}.title`)}
              </h3>
              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-               {isDesign 
-                 ? "Müşterilerinizin markanızla etkileşime girdiği her anı analiz ediyoruz. Acı noktalarını tespit edip, onları memnuniyet anlarına dönüştüren stratejik haritalar çıkarıyoruz."
-                 : "Yüksek trafikli sistemler için monolitik yapıları modern mikroservis mimarisine dönüştürüyoruz. Konteynerizasyon (Docker/K8s) ile sisteminiz her yüke hazır."}
+               {t(`f1.${modeKey}.description`)}
              </p>
              
              <ul className="space-y-4">
+               {/* Liste elemanlarını dinamik çekiyoruz */}
                {[
-                 isDesign ? "Persona Analizi" : "Load Balancing",
-                 isDesign ? "Touchpoint Optimizasyonu" : "Database Sharding",
-                 isDesign ? "Dönüşüm Hunisi Tasarımı" : "High Availability"
+                 t(`f1.${modeKey}.list1`),
+                 t(`f1.${modeKey}.list2`),
+                 t(`f1.${modeKey}.list3`)
                ].map((item, i) => (
                  <li key={i} className="flex items-center gap-3">
                    <span className={`flex h-6 w-6 items-center justify-center rounded-full text-white text-xs bg-gradient-to-r ${theme.gradient}`}>✓</span>
@@ -46,13 +50,14 @@ const Features = () => {
              </ul>
           </div>
           
-          {/* Sağ: Görsel */}
+          {/* Sağ: Görsel (ikon ve text değişimi) */}
           <div className="lg:w-1/2 order-1 lg:order-2">
              <div className={`relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex items-center justify-center`}>
-                {/* Placeholder Image or Icon */}
                 <div className="text-center">
                   <span className="text-6xl block mb-2">{isDesign ? "🧭" : "🏗️"}</span>
-                  <span className="font-mono text-sm opacity-50">{isDesign ? "Journey Map" : "System Diagram"}</span>
+                  <span className="font-mono text-sm opacity-50">
+                    {t(`f1.${modeKey}.imgAlt`)}
+                  </span>
                 </div>
              </div>
           </div>
@@ -65,7 +70,9 @@ const Features = () => {
              <div className={`relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex items-center justify-center`}>
                  <div className="text-center">
                   <span className="text-6xl block mb-2">{isDesign ? "💅" : "🔐"}</span>
-                  <span className="font-mono text-sm opacity-50">{isDesign ? "UI Kit" : "Security Layer"}</span>
+                  <span className="font-mono text-sm opacity-50">
+                    {t(`f2.${modeKey}.imgAlt`)}
+                  </span>
                 </div>
              </div>
            </div>
@@ -73,18 +80,16 @@ const Features = () => {
            {/* Sağ: İçerik */}
            <div className="lg:w-1/2 order-2">
              <span className={`inline-block px-3 py-1 mb-4 text-xs font-semibold rounded-full ${theme.badge}`}>
-               {isDesign ? "AESTHETICS" : "SECURITY"}
+               {t(`f2.${modeKey}.badge`)}
              </span>
              <h3 className="text-3xl font-bold mb-6 text-black dark:text-white sm:text-4xl">
-               {isDesign ? "Modern & Trend UI Tasarımı" : "Kurumsal Veri Güvenliği (B2B)"}
+               {t(`f2.${modeKey}.title`)}
              </h3>
              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-               {isDesign 
-                 ? "Sadece güzel görünen değil, hissettiren tasarımlar. Glassmorphism, 3D elementler ve mikro-animasyonlarla kullanıcı arayüzünüzü modern sanat eserine çeviriyoruz."
-                 : "B2B platformlarınızda uçtan uca şifreleme, rol tabanlı erişim kontrolü (RBAC) ve düzenli penetrasyon testleri ile verileriniz her zaman güvende."}
+               {t(`f2.${modeKey}.description`)}
              </p>
              <button className={`font-semibold transition-colors hover:underline ${theme.titleColor}`}>
-                Daha fazlasını keşfet &rarr;
+                {t("cta")} &rarr;
              </button>
            </div>
         </div>

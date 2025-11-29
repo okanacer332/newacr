@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { useViewMode } from "@/app/context/ViewModeContext";
 import menuData from "./menuData";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslations } from "next-intl"; // EKLENDİ
 
 const Header = () => {
+  // EKLENDİ: Çeviri kancası
+  const t = useTranslations("Header");
+  
   const { mode, setMode } = useViewMode();
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
@@ -51,11 +55,10 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* MODE SWITCHER (Floating Island) - Şimdi Mobilde de Aktif */}
+        {/* MODE SWITCHER */}
         <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 
           ${stickyMenu ? "scale-90" : "scale-100"}`}
         >
-          {/* Mobile için w-[210px] h-10, Desktop için w-[280px] h-12 */}
           <div className="relative flex h-10 w-[210px] sm:h-12 sm:w-[280px] items-center rounded-full bg-white/10 p-1 sm:p-1.5 shadow-inner backdrop-blur-2xl border border-white/20 dark:bg-black/20 dark:border-white/10">
             <div
               className={`absolute h-8 sm:h-9 w-[calc(50%-4px)] sm:w-[calc(50%-6px)] rounded-full shadow-lg transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${glowColor} ${
@@ -71,7 +74,8 @@ const Header = () => {
               }`}
             >
               <span className={`text-base sm:text-lg transition-transform duration-500 ${isDesign ? "scale-125 rotate-0" : "scale-100 rotate-12 opacity-50"}`}>🎨</span>
-              <span className="tracking-wide">DESIGN</span>
+              {/* GÜNCELLENDİ: Çeviri kullanıldı */}
+              <span className="tracking-wide">{t('designMode')}</span>
             </button>
             <button
               onClick={() => setMode("code")}
@@ -80,7 +84,8 @@ const Header = () => {
               }`}
             >
               <span className={`text-base sm:text-lg transition-transform duration-500 ${!isDesign ? "scale-125 rotate-0" : "scale-100 -rotate-12 opacity-50"}`}>👨‍💻</span>
-              <span className="tracking-wide">CODE</span>
+              {/* GÜNCELLENDİ: Çeviri kullanıldı */}
+              <span className="tracking-wide">{t('codeMode')}</span>
             </button>
           </div>
         </div>
@@ -92,7 +97,8 @@ const Header = () => {
               {menuData.map((item, key) => (
                 <li key={key}>
                   <Link href={item.path || "#"} className="text-sm font-medium text-black/60 hover:text-black dark:text-white/60 dark:hover:text-white transition-colors">
-                    {item.title}
+                    {/* GÜNCELLENDİ: Dinamik çeviri */}
+                    {t(`menu.${item.title}`)}
                   </Link>
                 </li>
               ))}
@@ -107,7 +113,8 @@ const Header = () => {
             href="/contact"
             className={`hidden lg:flex items-center justify-center rounded-full bg-black dark:bg-white px-5 py-2 text-sm font-bold text-white dark:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg`}
           >
-            Let's Talk
+            {/* GÜNCELLENDİ: Çeviri kullanıldı */}
+            {t('letsTalk')}
           </Link>
 
           {/* Mobile Menu Button */}
@@ -128,20 +135,20 @@ const Header = () => {
       }`}>
         <button onClick={() => setNavigationOpen(false)} className="absolute top-6 right-6 text-2xl p-2">✕</button>
         
-        {/* Switcher buradan kaldırıldı çünkü artık header'da sabit */}
         <div className="mb-8 block sm:hidden">
-          {/* Mobilde dil seçeneği buraya eklenebilir eğer headerda sığmazsa */}
           <LanguageSwitcher />
         </div>
 
         <nav className="flex flex-col items-center gap-6">
           {menuData.map((item, key) => (
             <Link key={key} href={item.path || "#"} onClick={() => setNavigationOpen(false)} className="text-xl font-bold text-black dark:text-white">
-              {item.title}
+               {/* GÜNCELLENDİ: Dinamik çeviri */}
+               {t(`menu.${item.title}`)}
             </Link>
           ))}
           <Link href="/contact" onClick={() => setNavigationOpen(false)} className={`mt-4 px-8 py-3 rounded-full text-white font-bold text-lg shadow-lg bg-gradient-to-r ${activeGradient}`}>
-            Get in Touch
+            {/* GÜNCELLENDİ: Çeviri kullanıldı */}
+            {t('getInTouch')}
           </Link>
         </nav>
       </div>

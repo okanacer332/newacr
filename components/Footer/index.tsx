@@ -1,13 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { useViewMode } from "@/app/context/ViewModeContext"; // EKLENDİ
+import { useTranslations } from "next-intl"; // EKLENDİ
 
 const Footer = () => {
+  const t = useTranslations("Footer"); // Hook Eklendi
+  const { mode } = useViewMode();
+  const isDesign = mode === "design";
+  const modeKey = isDesign ? "design" : "code";
+
+  // Gradient ayarı (Contact ile uyumlu)
+  const logoGradient = isDesign
+    ? "from-purple-600 to-pink-500"
+    : "from-blue-600 to-cyan-500";
+
   return (
     <>
       <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-blacksection">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
-          {/* <!-- Footer Top --> */}
+          {/* */}
           <div className="py-20 lg:py-25">
             <div className="flex flex-wrap gap-8 lg:justify-between lg:gap-0">
               <motion.div
@@ -28,35 +39,30 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="animate_top w-1/2 lg:w-1/4"
               >
-                <a href="/" className="relative">
-                  <Image
-                    width={110}
-                    height={80}
-                    src="/images/logo/logo-light.svg"
-                    alt="Logo"
-                    className="dark:hidden"
-                  />
-                  <Image
-                    width={110}
-                    height={80}
-                    src="/images/logo/logo-dark.svg"
-                    alt="Logo"
-                    className="hidden dark:block"
-                  />
+                {/* LOGO DEĞİŞİMİ: Image yerine Tipografi */}
+                <a href="/" className="relative block mb-5">
+                  <h2 className="text-3xl font-extrabold tracking-tight text-black dark:text-white">
+                    ACR
+                    <span
+                      className={`bg-gradient-to-r bg-clip-text text-transparent ${logoGradient}`}
+                    >
+                      TECH
+                    </span>
+                  </h2>
                 </a>
 
                 <p className="mb-10 mt-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  {t("description")}
                 </p>
 
                 <p className="mb-1.5 text-sectiontitle uppercase tracking-[5px]">
-                  contact
+                  {t("contact.email")}
                 </p>
                 <a
-                  href="#"
-                  className="text-itemtitle font-medium text-black dark:text-white"
+                  href="mailto:info@acrtech.com.tr"
+                  className="text-itemtitle font-medium text-black dark:text-white hover:text-primary transition-colors"
                 >
-                  hello@solid.com
+                  info@acrtech.com.tr
                 </a>
               </motion.div>
 
@@ -80,13 +86,13 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
-                    Quick Links
+                    {t("quickLinks")}
                   </h4>
 
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Home
@@ -110,7 +116,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/pricing"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Pricing
@@ -138,7 +144,7 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
-                    Support
+                    {t("support")}
                   </h4>
 
                   <ul>
@@ -160,7 +166,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/blog"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Our Blog
@@ -168,7 +174,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/contact"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Contact Us
@@ -196,17 +202,17 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mb-9 text-itemtitle2 font-medium text-black dark:text-white">
-                    Newsletter
+                    {t("newsletter.title")}
                   </h4>
                   <p className="mb-4 w-[90%]">
-                    Subscribe to receive future updates
+                    {t("newsletter.subtitle")}
                   </p>
 
                   <form action="#">
                     <div className="relative">
                       <input
                         type="text"
-                        placeholder="Email address"
+                        placeholder={t("newsletter.placeholder")}
                         className="w-full rounded-full border border-stroke px-6 py-3 shadow-solid-11 focus:border-primary focus:outline-hidden dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
                       />
 
@@ -241,9 +247,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          {/* <!-- Footer Top --> */}
+          {/* */}
 
-          {/* <!-- Footer Bottom --> */}
+          {/* */}
           <div className="flex flex-col flex-wrap items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between lg:gap-0">
             <motion.div
               variants={{
@@ -301,7 +307,8 @@ const Footer = () => {
               className="animate_top"
             >
               <p>
-                &copy; {new Date().getFullYear()} Solid. All rights reserved
+                {/* Dinamik Copyright */}
+                {t("copyright", { year: new Date().getFullYear() })}
               </p>
             </motion.div>
 
@@ -324,6 +331,7 @@ const Footer = () => {
               className="animate_top"
             >
               <ul className="flex items-center gap-5">
+                {/* Sosyal Medya İkonları (Aynen korundu) */}
                 <li>
                   <a href="#" aria-label="social icon">
                     <svg
@@ -419,7 +427,7 @@ const Footer = () => {
               </ul>
             </motion.div>
           </div>
-          {/* <!-- Footer Bottom --> */}
+          {/* */}
         </div>
       </footer>
     </>

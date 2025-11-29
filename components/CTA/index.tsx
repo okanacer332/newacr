@@ -1,10 +1,13 @@
 "use client";
 import { useViewMode } from "@/app/context/ViewModeContext";
 import Link from "next/link";
+import { useTranslations } from "next-intl"; // EKLENDİ
 
 const CTA = () => {
+  const t = useTranslations("CTA"); // Hook Eklendi
   const { mode } = useViewMode();
   const isDesign = mode === "design";
+  const modeKey = isDesign ? "design" : "code";
 
   const theme = {
     bgGradient: isDesign ? "from-purple-600 to-pink-600" : "from-blue-600 to-cyan-600",
@@ -21,12 +24,12 @@ const CTA = () => {
           
           <div className="relative z-10">
             <h2 className="mb-6 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-              {isDesign ? "Markanızın Hikayesini Birlikte Yazalım" : "Geleceğin Teknolojisini Bugünden Kuralım"}
+              {/* Dinamik Başlık */}
+              {t(`${modeKey}.title`)}
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-white/90">
-              {isDesign 
-                ? "Tasarım odaklı düşünce yapımızla projelerinize değer katmaya hazırız. Hemen bir kahve içelim."
-                : "Karmaşık yazılım problemlerinize en net çözümleri sunuyoruz. Projenizi teknik ekibimizle değerlendirin."}
+              {/* Dinamik Açıklama */}
+              {t(`${modeKey}.description`)}
             </p>
             
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -34,13 +37,15 @@ const CTA = () => {
                 href="/contact"
                 className={`rounded-full bg-white px-8 py-4 font-bold transition-transform hover:scale-105 shadow-lg ${theme.buttonText}`}
               >
-                {isDesign ? "Projeyi Başlat" : "Teklif İste"}
+                {/* Dinamik Ana Buton (Projeyi Başlat / Teklif İste) */}
+                {t(`${modeKey}.button`)}
               </Link>
               <Link
                 href="/portfolio"
                 className="rounded-full border border-white px-8 py-4 font-bold text-white transition-colors hover:bg-white/10"
               >
-                Portfolyoyu İncele
+                {/* Sabit İkincil Buton Çevirisi */}
+                {t("viewPortfolio")}
               </Link>
             </div>
           </div>

@@ -2,19 +2,20 @@
 import { useViewMode } from "@/app/context/ViewModeContext";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl"; // EKLENDİ
 
 const Hero = () => {
+  const t = useTranslations("Hero"); // EKLENDİ
   const { mode } = useViewMode();
   const isDesign = mode === "design";
 
-  // İçerik Yönetimi
+  // İçerik Yönetimi (Çeviri Entegrasyonu)
   const content = {
-    title: isDesign ? "Modern Design Solutions" : "Next-Gen Engineering",
-    subtitle: isDesign 
-      ? "We craft exceptional user experiences through customer journey mapping, product UI design, and strategic UX consulting."
-      : "We build scalable, high-performance systems with cutting-edge code quality and architectural excellence.",
-    ctaPrimary: isDesign ? "Start Your Project" : "Start Coding",
-    ctaSecondary: isDesign ? "View Our Work" : "View GitHub",
+    title: isDesign ? t("design.title") : t("code.title"),
+    subtitle: isDesign ? t("design.subtitle") : t("code.subtitle"),
+    ctaPrimary: isDesign ? t("design.ctaPrimary") : t("code.ctaPrimary"),
+    ctaSecondary: isDesign ? t("design.ctaSecondary") : t("code.ctaSecondary"),
+    badge: isDesign ? t("design.badge") : t("code.badge"), // Badge metnini de buraya aldım
   };
 
   const theme = {
@@ -30,7 +31,6 @@ const Hero = () => {
     blobColor: isDesign 
       ? "from-purple-400/40 to-pink-400/40" 
       : "from-blue-400/40 to-cyan-400/40",
-    // Dot renklerini daha koyu/canlı seçtim
     dotColor: isDesign ? "bg-purple-600" : "bg-blue-600",
     pingColor: isDesign ? "bg-purple-500" : "bg-blue-500"
   };
@@ -70,13 +70,13 @@ const Hero = () => {
               <motion.span
                 className={`absolute h-full w-full rounded-full opacity-70 ${theme.pingColor}`}
                 animate={{ 
-                  scale: [1, 2.5],  // 1 kattan 2.5 kata çıksın (Daha geniş)
-                  opacity: [0.7, 0] // Opaklık 0.7'den başlayıp sıfırlansın
+                  scale: [1, 2.5],
+                  opacity: [0.7, 0]
                 }}
                 transition={{ 
-                  duration: 1.5,     // 1.5 saniyede tamamlasın
-                  repeat: Infinity,  // Sonsuza kadar tekrar etsin
-                  ease: "easeOut"    // Dışarı doğru yavaşlasın
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeOut"
                 }}
               />
               {/* 2. İç Nokta (Sabit) */}
@@ -84,7 +84,8 @@ const Hero = () => {
             </div>
             {/* -------------------------- */}
             
-            {isDesign ? "UX-UI Design Agency" : "Full-Stack Development"}
+            {/* Badge Text Güncellendi */}
+            {content.badge}
           </div>
 
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-black dark:text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
@@ -105,7 +106,7 @@ const Hero = () => {
               {content.ctaPrimary}
             </Link>
             <Link
-              href="/portfolio"
+              href="/portfolio" // Burası 'ctaSecondary' path'i olabilir, kodda sabit portfolio idi, öyle bıraktım.
               className={`w-full sm:w-auto px-8 py-4 rounded-full font-bold text-lg border-2 transition-all duration-300 ${theme.buttonSecondary}`}
             >
               {content.ctaSecondary}

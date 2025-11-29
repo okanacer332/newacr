@@ -2,59 +2,50 @@
 import { useViewMode } from "@/app/context/ViewModeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl"; // EKLENDİ
 
 const Services = () => {
+  const t = useTranslations("Services"); // EKLENDİ
   const { mode } = useViewMode();
   const isDesign = mode === "design";
   
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  // İlettiğin metne göre güncellenen veriler
-  const designServices = [
-    { 
-      id: 1, 
-      title: "UX Consultant", 
-      desc: "Strategic UX guidance to optimize user experiences and drive business growth through data-driven insights.", 
-      icon: "💡" 
-    },
-    { 
-      id: 2, 
-      title: "Product Design", 
-      desc: "End-to-end product design from concept to launch, creating intuitive interfaces that users love.", 
-      icon: "✨" 
-    },
-    { 
-      id: 3, 
-      title: "New Business Dev", 
-      desc: "Strategic design thinking to identify opportunities and create compelling digital products for growth.", 
-      icon: "🚀" 
-    },
-    { 
-      id: 4, 
-      title: "Customer Journey", 
-      desc: "Visualize and optimize every touchpoint in your customer's journey for maximum engagement.", 
-      icon: "🗺️" 
-    },
-    // Footer'dan alınan ekstra servis (Load More için)
-    { 
-      id: 5, 
-      title: "CRM Marketing", 
-      desc: "Data-driven marketing strategies integrated with design to boost customer retention and loyalty.", 
-      icon: "📊" 
-    }
-  ];
+  // --- DESIGN DATA CONFIG ---
+  const designKeys = ["ux", "product", "newBusiness", "journey", "crm"];
+  const designIcons: Record<string, string> = {
+    ux: "💡",
+    product: "✨",
+    newBusiness: "🚀",
+    journey: "🗺️",
+    crm: "📊"
+  };
 
-  // Code modu için placeholder (Senin profesyonelliğine uygun)
-  const codeServices = [
-    { id: 1, title: "System Architect", desc: "Designing robust, scalable back-end architectures.", icon: "🏗️" },
-    { id: 2, title: "Full-Stack Dev", desc: "Pixel-perfect frontend meets powerful backend logic.", icon: "💻" },
-    { id: 3, title: "Database Design", desc: "Optimized schemas for high-performance data handling.", icon: "🗄️" },
-    { id: 4, title: "DevOps & Cloud", desc: "Seamless CI/CD pipelines and cloud infrastructure.", icon: "☁️" },
-    { id: 5, title: "API Development", desc: "Secure and fast RESTful & GraphQL API systems.", icon: "🔌" }
-  ];
+  // --- CODE DATA CONFIG ---
+  const codeKeys = ["architect", "fullStack", "database", "devops", "api"];
+  const codeIcons: Record<string, string> = {
+    architect: "🏗️",
+    fullStack: "💻",
+    database: "🗄️",
+    devops: "☁️",
+    api: "🔌"
+  };
 
-  const services = isDesign ? designServices : codeServices;
+  // Dinamik Veri Oluşturma (Çeviri + Config)
+  const currentKeys = isDesign ? designKeys : codeKeys;
+  const currentIcons = isDesign ? designIcons : codeIcons;
+  const modeKey = isDesign ? "design" : "code";
+
+  // Veri listesini oluşturuyoruz
+  const services = currentKeys.map((key, index) => ({
+    id: index + 1,
+    // Örnek: t('design.items.ux.title')
+    title: t(`${modeKey}.items.${key}.title`),
+    desc: t(`${modeKey}.items.${key}.desc`),
+    icon: currentIcons[key]
+  }));
+
   // İlk 4 tanesini göster, showAll true ise hepsini göster
   const displayedServices = showAll ? services : services.slice(0, 4);
   const remainingCount = services.length - 4;
@@ -73,15 +64,13 @@ const Services = () => {
         
         <div className="mb-12 text-center">
           <span className={`text-sm font-bold uppercase tracking-wider ${isDesign ? "text-purple-600" : "text-blue-600"}`}>
-            Our Expertise
+            {t("sectionSubtitle")}
           </span>
           <h2 className="mt-2 text-3xl font-bold text-black dark:text-white sm:text-4xl">
-             {isDesign ? "Design Expertise" : "Technical Mastery"}
+             {t(`${modeKey}.title`)}
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {isDesign 
-              ? "Comprehensive UX-UI design services focused on creating exceptional user experiences and driving business results."
-              : "End-to-end engineering solutions for complex technical challenges."}
+            {t(`${modeKey}.description`)}
           </p>
         </div>
 
@@ -135,7 +124,7 @@ const Services = () => {
                            {service.desc}
                          </p>
                          <div className={`mt-4 inline-flex items-center text-sm font-bold ${isDesign ? "text-purple-600" : "text-blue-600"}`}>
-                           View Service Details →
+                           {t("viewDetails")}
                          </div>
                        </motion.div>
                     </div>
@@ -153,7 +142,7 @@ const Services = () => {
                onClick={() => setShowAll(!showAll)}
                className={`inline-flex items-center gap-2 px-8 py-3 rounded-full text-white font-bold transition-all hover:-translate-y-1 hover:shadow-lg ${theme.button}`}
              >
-               {showAll ? "Show Less" : `Load More Services (${remainingCount})`}
+               {showAll ? t("showLess") : `${t("loadMore")} (${remainingCount})`}
              </button>
            </div>
         ) : null}

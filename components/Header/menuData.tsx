@@ -3,78 +3,55 @@ import { Menu } from "@/types/menu";
 const menuData: Menu[] = [
   {
     id: 1,
-    title: "Home",
-    newTab: false,
+    title: "home", // messages/*.json dosyasındaki "Header.menu.home" anahtarına karşılık gelir
     path: "/",
+    newTab: false,
   },
   {
     id: 2,
-    title: "Features",
+    title: "about",
+    path: "/about",
     newTab: false,
-    path: "/#features",
   },
   {
-    id: 2.1,
-    title: "Blog",
-    newTab: false,
+    id: 33,
+    title: "blog",
     path: "/blog",
-  },
-  {
-    id: 2.3,
-    title: "Docs",
     newTab: false,
-    path: "/docs",
   },
   {
     id: 3,
-    title: "Pages",
+    title: "support",
+    path: "/contact", // İletişim/Destek sayfasına yönlendirir
+    newTab: false,
+  },
+  {
+    id: 4,
+    title: "docs",
+    path: "/docs",
+    newTab: false,
+  },
+  /* Eğer dropdown menü (Pages) kullanıyorsan bu yapıyı açabilirsin:
+  {
+    id: 5,
+    title: "pages",
     newTab: false,
     submenu: [
       {
-        id: 31,
-        title: "Blog Grid",
+        id: 51,
+        title: "about", // Alt menüde de aynı mantık
+        path: "/about",
         newTab: false,
-        path: "/blog",
       },
       {
-        id: 34,
-        title: "Sign In",
+        id: 52,
+        title: "contact",
+        path: "/contact",
         newTab: false,
-        path: "/auth/signin",
-      },
-      {
-        id: 35,
-        title: "Sign Up",
-        newTab: false,
-        path: "/auth/signup",
-      },
-      {
-        id: 35,
-        title: "Docs",
-        newTab: false,
-        path: "/docs",
-      },
-      {
-        id: 35.1,
-        title: "Support",
-        newTab: false,
-        path: "/support",
-      },
-      {
-        id: 36,
-        title: "404",
-        newTab: false,
-        path: "/error",
       },
     ],
   },
-
-  {
-    id: 4,
-    title: "Support",
-    newTab: false,
-    path: "/support",
-  },
+  */
 ];
 
 export default menuData;
