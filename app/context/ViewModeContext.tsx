@@ -26,6 +26,7 @@ export const ViewModeProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// Named export here matches `import { useViewMode }`
 export const useViewMode = () => {
   const context = useContext(ViewModeContext);
   if (!context) {

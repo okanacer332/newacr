@@ -1,197 +1,149 @@
 "use client";
-import Image from "next/image";
-import SectionHeader from "../Common/SectionHeader";
+import { useViewMode } from "@/app/context/ViewModeContext";
 
 const Pricing = () => {
+  const { mode } = useViewMode();
+  const isDesign = mode === "design";
+
+  const plans = [
+    {
+      name: "Starter",
+      subtitle: "Best for Small Projects",
+      price: "$2,500",
+      period: "/project",
+      desc: "Perfect for startups and small businesses looking to establish their design foundation.",
+      features: [
+        "UI/UX Design Consultation",
+        "Wireframing & Prototyping",
+        "Up to 5 Page Designs",
+        "Basic Brand Guidelines",
+        "2 Revision Rounds",
+        "Email Support"
+      ],
+      popular: false
+    },
+    {
+      name: "Professional",
+      subtitle: "Most Popular",
+      price: "$5,000",
+      period: "/project",
+      desc: "Ideal for growing businesses that need comprehensive design solutions.",
+      features: [
+        "Everything in Starter",
+        "Customer Journey Mapping",
+        "Up to 15 Page Designs",
+        "Complete Design System",
+        "Interactive Prototypes",
+        "Unlimited Revisions",
+        "Priority Support",
+        "User Testing Session"
+      ],
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      subtitle: "For Large Teams",
+      price: "$10,000+",
+      period: "/project",
+      desc: "Comprehensive design partnership for established companies and complex projects.",
+      features: [
+        "Everything in Professional",
+        "Full Product Design",
+        "Unlimited Page Designs",
+        "CRM Marketing Strategy",
+        "New Business Development",
+        "Design Team Training",
+        "Dedicated Designer",
+        "24/7 Priority Support"
+      ],
+      popular: false
+    }
+  ];
+
+  const theme = {
+    highlight: isDesign ? "text-purple-600" : "text-blue-600",
+    btnPrimary: isDesign ? "bg-purple-600 hover:bg-purple-700" : "bg-blue-600 hover:bg-blue-700",
+    popularTag: isDesign ? "bg-purple-600" : "bg-blue-600",
+    checkIcon: isDesign ? "text-purple-500" : "text-blue-500"
+  };
+
   return (
-    <>
-      {/* <!-- ===== Pricing Table Start ===== --> */}
-      <section className="overflow-hidden pb-20 pt-15 lg:pb-25 xl:pb-30">
-        <div className="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
-          {/* <!-- Section Title Start --> */}
-          <div className="animate_top mx-auto text-center">
-            <SectionHeader
-              headerInfo={{
-                title: `PRICING PLANS`,
-                subtitle: `Simple Pricing`,
-                description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.`,
-              }}
-            />
-          </div>
-          {/* <!-- Section Title End --> */}
+    <section className="py-20 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black dark:text-white">Choose Your Plan</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Flexible design packages tailored to your project needs and budget.
+          </p>
         </div>
 
-        <div className="relative mx-auto mt-15 max-w-[1207px] px-4 md:px-8 xl:mt-20 xl:px-0">
-          <div className="absolute -bottom-15 -z-1 h-full w-full">
-            <Image
-              fill
-              src="./images/shape/shape-dotted-light.svg"
-              alt="Dotted"
-              className="dark:hidden"
-            />
-          </div>
-          <div className="flex flex-wrap justify-center gap-7.5 lg:flex-nowrap xl:gap-12.5">
-            {/* <!-- Pricing Item --> */}
-            <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                $10{" "}
-                <span className="text-regular text-waterloo dark:text-manatee">
-                  /month
-                </span>
-              </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
-                Small Pack
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {plans.map((plan, index) => (
+            <div 
+              key={index} 
+              className={`relative flex flex-col rounded-2xl border p-6 sm:p-8 shadow-lg bg-white dark:bg-black/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
+                plan.popular 
+                  ? `border-2 ${isDesign ? "border-purple-500" : "border-blue-500"} z-10 scale-105 sm:scale-100 lg:scale-105` 
+                  : "border-gray-200 dark:border-gray-800"
+              }`}
+            >
+              {/* Popular Tag - Fixed Positioning */}
+              {plan.popular && (
+                <div className={`absolute top-0 right-0 rounded-bl-xl rounded-tr-lg px-4 py-1.5 text-xs font-bold text-white shadow-md ${theme.popularTag}`}>
+                  MOST POPULAR
+                </div>
+              )}
 
-              <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
-                <ul>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    300 GB Storage
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
-                  </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
-                    Exclusive Support
-                  </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
-                    Custom Branding Strategy
-                  </li>
-                </ul>
+              <div className="mb-4">
+                <span className={`text-sm font-bold uppercase tracking-wider ${theme.highlight}`}>
+                  {plan.subtitle}
+                </span>
+                <h3 className="mt-2 text-2xl font-bold text-black dark:text-white">{plan.name}</h3>
               </div>
 
-              <button
-                aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-              >
-                <span className="duration-300 group-hover/btn:pr-2">
-                  Get the Plan
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
+              <div className="mb-6 flex items-baseline gap-1">
+                <span className="text-4xl font-extrabold text-black dark:text-white">{plan.price}</span>
+                <span className="text-gray-500">{plan.period}</span>
+              </div>
+
+              <p className="mb-8 text-sm text-gray-600 dark:text-gray-400 border-b border-gray-100 dark:border-gray-800 pb-6">
+                {plan.desc}
+              </p>
+
+              <ul className="mb-8 space-y-4 flex-1">
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                    <svg className={`h-5 w-5 shrink-0 ${theme.checkIcon}`} viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="leading-snug">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-col gap-3 mt-auto">
+                <button className={`w-full rounded-full py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:shadow-xl ${theme.btnPrimary}`}>
+                  Hire for {plan.name}
+                </button>
+                <button className="w-full rounded-full border border-gray-200 bg-transparent py-3.5 text-sm font-bold text-black dark:border-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 transition-all">
+                  View Details
+                </button>
+              </div>
+              
+              <div className={`mt-4 text-center text-xs font-semibold cursor-pointer hover:underline ${theme.highlight}`}>
+                 Learn more about this plan →
+              </div>
             </div>
-
-            {/* <!-- Pricing Item --> */}
-            <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <div className="absolute -right-3.5 top-7.5 -rotate-90 rounded-bl-full rounded-tl-full bg-primary px-4.5 py-1.5 text-metatitle font-medium uppercase text-white">
-                popular
-              </div>
-
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                $59{" "}
-                <span className="text-regular text-waterloo dark:text-manatee">
-                  /month
-                </span>
-              </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
-                Medium Pack
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
-
-              <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
-                <ul>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    300 GB Storage
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Exclusive Support
-                  </li>
-                  <li className="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee">
-                    Custom Branding Strategy
-                  </li>
-                </ul>
-              </div>
-
-              <button
-                aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-              >
-                <span className="duration-300 group-hover/btn:pr-2">
-                  Get the Plan
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* <!-- Pricing Item --> */}
-            <div className="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5">
-              <h3 className="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                $189{" "}
-                <span className="text-regular text-waterloo dark:text-manatee">
-                  /month
-                </span>
-              </h3>
-              <h4 className="mb-2.5 text-para2 font-medium text-black dark:text-white">
-                Large Pack
-              </h4>
-              <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
-
-              <div className="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark">
-                <ul>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    300 GB Storage
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Exclusive Support
-                  </li>
-                  <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Custom Branding Strategy
-                  </li>
-                </ul>
-              </div>
-
-              <button
-                aria-label="Get the Plan button"
-                className="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
-              >
-                <span className="duration-300 group-hover/btn:pr-2">
-                  Get the Plan
-                </span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
-      {/* <!-- ===== Pricing Table End ===== --> */}
-    </>
+        
+        <div className="mt-12 text-center">
+           <p className="text-gray-600 dark:text-gray-400">
+             Need a custom solution? <a href="/contact" className={`font-bold underline ${theme.highlight}`}>Contact us</a> for a tailored quote.
+           </p>
+        </div>
+      </div>
+    </section>
   );
 };
 
