@@ -1,18 +1,20 @@
 {
   "Header": {
-    "designMode": "TASARIM",
-    "codeMode": "KOD",
-    "letsTalk": "Konuşalım",
-    "getInTouch": "İletişime Geç",
-    "menu": {
-      "home": "Anasayfa",
-      "about": "Hakkımızda",
-      "blog": "Blog",
-      "docs": "Dökümanlar",
-      "support": "Destek",
-      "pages": "Sayfalar"
-    }
-  },
+  "designMode": "Tasarım",
+  "codeMode": "Kod",
+  "letsTalk": "Konuşalım",
+  "getInTouch": "İletişime Geç",
+  "menu": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "features": "Özellikler",
+    "pricing": "Fiyatlar",
+    "testimonials": "Yorumlar",
+    "contact": "İletişim",
+    "blog": "Blog",
+    "docs": "Belgeler"
+  }
+},
   "Hero": {
     "design": {
       "badge": "UX-UI Tasarım Ajansı",

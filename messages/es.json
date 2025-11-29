@@ -1,18 +1,20 @@
 {
   "Header": {
-    "designMode": "DISEÑO",
-    "codeMode": "CÓDIGO",
-    "letsTalk": "Hablemos",
-    "getInTouch": "Contactar",
-    "menu": {
-      "home": "Inicio",
-      "about": "Nosotros",
-      "blog": "Blog",
-      "docs": "Docs",
-      "support": "Soporte",
-      "pages": "Páginas"
-    }
-  },
+  "designMode": "Diseño",
+  "codeMode": "Código",
+  "letsTalk": "Hablemos",
+  "getInTouch": "Contacto",
+  "menu": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "features": "Características",
+    "pricing": "Precios",
+    "testimonials": "Testimonios",
+    "contact": "Contacto",
+    "blog": "Blog",
+    "docs": "Documentos"
+  }
+},
   "Hero": {
     "design": {
       "badge": "Agencia de Diseño UX-UI",

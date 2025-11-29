@@ -3,55 +3,46 @@ import { Menu } from "@/types/menu";
 const menuData: Menu[] = [
   {
     id: 1,
-    title: "home", // messages/*.json dosyasındaki "Header.menu.home" anahtarına karşılık gelir
+    title: "home",
     path: "/",
+    sectionId: "home", // Hero bölümü için
     newTab: false,
   },
   {
     id: 2,
-    title: "about",
-    path: "/about",
-    newTab: false,
-  },
-  {
-    id: 33,
-    title: "blog",
-    path: "/blog",
+    title: "services",
+    path: "/",
+    sectionId: "services", // Services bölümü için
     newTab: false,
   },
   {
     id: 3,
-    title: "support",
-    path: "/contact", // İletişim/Destek sayfasına yönlendirir
+    title: "features",
+    path: "/",
+    sectionId: "features", // Features bölümü için
     newTab: false,
   },
   {
     id: 4,
-    title: "docs",
-    path: "/docs",
+    title: "pricing",
+    path: "/",
+    sectionId: "pricing", // Pricing bölümü için
     newTab: false,
   },
-  /* Eğer dropdown menü (Pages) kullanıyorsan bu yapıyı açabilirsin:
   {
     id: 5,
-    title: "pages",
+    title: "testimonials",
+    path: "/",
+    sectionId: "testimonials", // Testimonial bölümü için
     newTab: false,
-    submenu: [
-      {
-        id: 51,
-        title: "about", // Alt menüde de aynı mantık
-        path: "/about",
-        newTab: false,
-      },
-      {
-        id: 52,
-        title: "contact",
-        path: "/contact",
-        newTab: false,
-      },
-    ],
   },
-  */
+  {
+    id: 6,
+    title: "contact",
+    path: "/",
+    sectionId: "contact", // CTA/Contact bölümü için
+    newTab: false,
+  },
 ];
 
 export default menuData;

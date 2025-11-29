@@ -1,18 +1,20 @@
 {
   "Header": {
-    "designMode": "ДИЗАЙН",
-    "codeMode": "КОД",
-    "letsTalk": "Обсудить",
-    "getInTouch": "Связаться",
-    "menu": {
-      "home": "Главная",
-      "about": "О нас",
-      "blog": "Блог",
-      "docs": "Документы",
-      "support": "Поддержка",
-      "pages": "Страницы"
-    }
-  },
+  "designMode": "Дизайн",
+  "codeMode": "Код",
+  "letsTalk": "Поговорим",
+  "getInTouch": "Связаться",
+  "menu": {
+    "home": "Главная",
+    "services": "Услуги",
+    "features": "Особенности",
+    "pricing": "Цены",
+    "testimonials": "Отзывы",
+    "contact": "Контакты",
+    "blog": "Блог",
+    "docs": "Документы"
+  }
+},
   "Hero": {
     "design": {
       "badge": "UX-UI Дизайн Агентство",
