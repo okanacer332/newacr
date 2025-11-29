@@ -171,19 +171,20 @@
     }
   },
   "Footer": {
-    "description": "We craft digital experiences that merge art with technology. Your vision, our innovation.",
-    "quickLinks": "Quick Links",
+    "description": "Grow your business with technologies that shape the future. Modern, fast, and reliable solutions.",
+    "usefulLinks": "Useful Links",
     "support": "Support",
-    "newsletter": {
-      "title": "Newsletter",
-      "subtitle": "Subscribe to receive future updates",
-      "placeholder": "Email address",
-      "button": "Subscribe"
-    },
-    "copyright": "© {year} ACRTECH. All rights reserved.",
-    "contact": {
-      "email": "Email",
-      "phone": "Phone"
+    "followUs": "Follow Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "links": {
+      "home": "Home",
+      "features": "Features",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "blog": "Blog",
+      "docs": "Documentation"
     }
   }
 }
