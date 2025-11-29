@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useViewMode } from "@/app/context/ViewModeContext";
 import menuData from "./menuData";
-import LanguageSwitcher from "./LanguageSwitcher"; // Dil seçeneği eklendi
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const { mode, setMode } = useViewMode();
@@ -40,52 +40,53 @@ const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8">
         
         {/* LOGO */}
-        <div className="flex items-center gap-3 relative z-50">
+        <div className="flex items-center gap-3 relative z-50 shrink-0">
           <Link href="/" onClick={() => setNavigationOpen(false)} className="group flex items-center gap-3">
             <div className={`relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${activeGradient} text-white font-bold text-xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
               A
             </div>
-            <span className="text-xl font-bold tracking-tight text-black dark:text-white hidden sm:block">
+            <span className="text-xl font-bold tracking-tight text-black dark:text-white hidden lg:block">
               ACR<span className={`bg-gradient-to-r ${activeGradient} bg-clip-text text-transparent transition-all duration-500`}>TECH</span>
             </span>
           </Link>
         </div>
 
-        {/* MODE SWITCHER (Floating Island) */}
-        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 hidden md:block
+        {/* MODE SWITCHER (Floating Island) - Şimdi Mobilde de Aktif */}
+        <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 
           ${stickyMenu ? "scale-90" : "scale-100"}`}
         >
-          <div className="relative flex h-12 w-[280px] items-center rounded-full bg-white/10 p-1.5 shadow-inner backdrop-blur-2xl border border-white/20 dark:bg-black/20 dark:border-white/10">
+          {/* Mobile için w-[210px] h-10, Desktop için w-[280px] h-12 */}
+          <div className="relative flex h-10 w-[210px] sm:h-12 sm:w-[280px] items-center rounded-full bg-white/10 p-1 sm:p-1.5 shadow-inner backdrop-blur-2xl border border-white/20 dark:bg-black/20 dark:border-white/10">
             <div
-              className={`absolute h-9 w-[calc(50%-6px)] rounded-full shadow-lg transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${glowColor} ${
+              className={`absolute h-8 sm:h-9 w-[calc(50%-4px)] sm:w-[calc(50%-6px)] rounded-full shadow-lg transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${glowColor} ${
                 isDesign 
-                  ? "left-1.5 bg-gradient-to-r from-purple-600 to-pink-600" 
-                  : "left-[calc(50%+1.5px)] bg-gradient-to-r from-blue-600 to-cyan-500"
+                  ? "left-1 sm:left-1.5 bg-gradient-to-r from-purple-600 to-pink-600" 
+                  : "left-[calc(50%+2px)] sm:left-[calc(50%+1.5px)] bg-gradient-to-r from-blue-600 to-cyan-500"
               }`}
             />
             <button
               onClick={() => setMode("design")}
-              className={`relative z-10 w-1/2 flex items-center justify-center gap-2 rounded-full text-sm font-bold transition-colors duration-300 ${
+              className={`relative z-10 w-1/2 flex items-center justify-center gap-1 sm:gap-2 rounded-full text-xs sm:text-sm font-bold transition-colors duration-300 ${
                 isDesign ? "text-white" : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               }`}
             >
-              <span className={`text-lg transition-transform duration-500 ${isDesign ? "scale-125 rotate-0" : "scale-100 rotate-12 opacity-50"}`}>🎨</span>
+              <span className={`text-base sm:text-lg transition-transform duration-500 ${isDesign ? "scale-125 rotate-0" : "scale-100 rotate-12 opacity-50"}`}>🎨</span>
               <span className="tracking-wide">DESIGN</span>
             </button>
             <button
               onClick={() => setMode("code")}
-              className={`relative z-10 w-1/2 flex items-center justify-center gap-2 rounded-full text-sm font-bold transition-colors duration-300 ${
+              className={`relative z-10 w-1/2 flex items-center justify-center gap-1 sm:gap-2 rounded-full text-xs sm:text-sm font-bold transition-colors duration-300 ${
                 !isDesign ? "text-white" : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               }`}
             >
-              <span className={`text-lg transition-transform duration-500 ${!isDesign ? "scale-125 rotate-0" : "scale-100 -rotate-12 opacity-50"}`}>👨‍💻</span>
+              <span className={`text-base sm:text-lg transition-transform duration-500 ${!isDesign ? "scale-125 rotate-0" : "scale-100 -rotate-12 opacity-50"}`}>👨‍💻</span>
               <span className="tracking-wide">CODE</span>
             </button>
           </div>
         </div>
 
         {/* RIGHT SIDE ACTIONS */}
-        <div className="flex items-center gap-4 relative z-50">
+        <div className="flex items-center gap-2 sm:gap-4 relative z-50 shrink-0">
           <nav className="hidden lg:block">
             <ul className="flex items-center gap-6">
               {menuData.map((item, key) => (
@@ -98,8 +99,9 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Language Switcher Added Here */}
-          <LanguageSwitcher />
+          <div className="hidden sm:block">
+             <LanguageSwitcher />
+          </div>
 
           <Link
             href="/contact"
@@ -126,10 +128,10 @@ const Header = () => {
       }`}>
         <button onClick={() => setNavigationOpen(false)} className="absolute top-6 right-6 text-2xl p-2">✕</button>
         
-        {/* Mobile Mode Switcher */}
-        <div className="flex gap-4 mb-8">
-           <button onClick={() => {setMode("design"); setNavigationOpen(false)}} className={`px-6 py-2 rounded-full font-bold ${isDesign ? "bg-purple-600 text-white" : "bg-gray-200 text-gray-600"}`}>Design</button>
-           <button onClick={() => {setMode("code"); setNavigationOpen(false)}} className={`px-6 py-2 rounded-full font-bold ${!isDesign ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-600"}`}>Code</button>
+        {/* Switcher buradan kaldırıldı çünkü artık header'da sabit */}
+        <div className="mb-8 block sm:hidden">
+          {/* Mobilde dil seçeneği buraya eklenebilir eğer headerda sığmazsa */}
+          <LanguageSwitcher />
         </div>
 
         <nav className="flex flex-col items-center gap-6">
