@@ -1,12 +1,13 @@
 import {defineRouting} from 'next-intl/routing';
-import {createNavigation} from 'next-intl/navigation'; // createSharedPathnamesNavigation yerine bunu kullanıyoruz
-export const routing = defineRouting({
-  // DEĞİŞİKLİK 1: Sıralamayı değiştirdik, 'tr' ilk sırada.
-  locales: ['tr', 'en'],
+import {createNavigation} from 'next-intl/navigation'; 
 
-  // DEĞİŞİKLİK 2: Varsayılan dili 'tr' yaptık.
+export const routing = defineRouting({
+  // YENİ DİLLER EKLENDİ
+  locales: ['tr', 'en', 'ru', 'es', 'ar'],
+
+  // Varsayılan dil Türkçe
   defaultLocale: 'tr'
 });
 
 export const {Link, redirect, usePathname, useRouter} =
-  createNavigation(routing); // Fonksiyon adı burada da değişti
+  createNavigation(routing);

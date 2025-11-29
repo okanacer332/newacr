@@ -1,0 +1,187 @@
+{
+  "Header": {
+    "designMode": "DISEÑO",
+    "codeMode": "CÓDIGO",
+    "letsTalk": "Hablemos",
+    "getInTouch": "Contactar",
+    "menu": {
+      "home": "Inicio",
+      "about": "Nosotros",
+      "blog": "Blog",
+      "docs": "Docs",
+      "support": "Soporte",
+      "pages": "Páginas"
+    }
+  },
+  "Hero": {
+    "design": {
+      "badge": "Agencia de Diseño UX-UI",
+      "title": "Soluciones de Diseño Moderno",
+      "subtitle": "Creamos experiencias excepcionales mediante mapas de viaje del cliente, diseño de UI y consultoría estratégica de UX.",
+      "ctaPrimary": "Iniciar Proyecto",
+      "ctaSecondary": "Ver Trabajos"
+    },
+    "code": {
+      "badge": "Desarrollo Full-Stack",
+      "title": "Ingeniería de Nueva Generación",
+      "subtitle": "Construimos sistemas escalables y de alto rendimiento con código de vanguardia y excelencia arquitectónica.",
+      "ctaPrimary": "Empezar a Codificar",
+      "ctaSecondary": "Ir a GitHub"
+    }
+  },
+  "Features": {
+    "f1": {
+      "design": {
+        "badge": "ESTRATEGIA",
+        "title": "Mapeo del Viaje del Usuario",
+        "description": "Analizamos cada momento en que sus clientes interactúan con su marca. Identificamos puntos débiles y los convertimos en momentos de satisfacción.",
+        "list1": "Análisis de Personas",
+        "list2": "Optimización de Puntos de Contacto",
+        "list3": "Diseño de Embudo de Conversión",
+        "imgAlt": "Mapa de Viaje"
+      },
+      "code": {
+        "badge": "ARQUITECTURA",
+        "title": "Microservicios y Escalabilidad",
+        "description": "Transformamos estructuras monolíticas en arquitecturas modernas de microservicios. Su sistema listo para cualquier carga con Docker/K8s.",
+        "list1": "Balanceo de Carga",
+        "list2": "Sharding de Base de Datos",
+        "list3": "Alta Disponibilidad",
+        "imgAlt": "Diagrama del Sistema"
+      }
+    },
+    "f2": {
+      "design": {
+        "badge": "ESTÉTICA",
+        "title": "Diseño UI Moderno y Tendencia",
+        "description": "Diseños que no solo se ven bien, sino que se sienten bien. Convertimos su interfaz en una obra de arte moderna con Glassmorphism y 3D.",
+        "imgAlt": "Kit UI"
+      },
+      "code": {
+        "badge": "SEGURIDAD",
+        "title": "Seguridad de Datos Empresarial (B2B)",
+        "description": "Sus datos siempre seguros con encriptación de extremo a extremo, control de acceso basado en roles (RBAC) y pruebas de penetración.",
+        "imgAlt": "Capa de Seguridad"
+      }
+    },
+    "cta": "Explorar más"
+  },
+  "Services": {
+    "sectionSubtitle": "Nuestra Experiencia",
+    "viewDetails": "Ver Detalles →",
+    "loadMore": "Cargar Más",
+    "showLess": "Mostrar Menos",
+    "design": {
+      "title": "Experiencia en Diseño",
+      "description": "Servicios integrales de diseño UX-UI enfocados en crear experiencias de usuario excepcionales y resultados comerciales.",
+      "items": {
+        "ux": { "title": "Consultoría UX", "desc": "Guía estratégica de UX para optimizar experiencias y generar crecimiento basado en datos." },
+        "product": { "title": "Diseño de Producto", "desc": "Diseño de producto de extremo a extremo, creando interfaces intuitivas que los usuarios aman." },
+        "newBusiness": { "title": "Desarrollo de Negocios", "desc": "Pensamiento de diseño estratégico para identificar oportunidades y crear productos digitales." },
+        "journey": { "title": "Viaje del Cliente", "desc": "Visualice y optimice cada punto de contacto en el viaje de su cliente." },
+        "crm": { "title": "Marketing CRM", "desc": "Estrategias de marketing basadas en datos integradas con diseño para la retención de clientes." }
+      }
+    },
+    "code": {
+      "title": "Maestría Técnica",
+      "description": "Soluciones de ingeniería de extremo a extremo para desafíos técnicos complejos.",
+      "items": {
+        "architect": { "title": "Arquitecto de Sistemas", "desc": "Diseño de arquitecturas back-end robustas y escalables." },
+        "fullStack": { "title": "Desarrollo Full-Stack", "desc": "Frontend perfecto en píxeles se encuentra con una potente lógica de backend." },
+        "database": { "title": "Diseño de Base de Datos", "desc": "Esquemas optimizados para el manejo de datos de alto rendimiento." },
+        "devops": { "title": "DevOps y Nube", "desc": "Pipelines CI/CD fluidos e infraestructura en la nube." },
+        "api": { "title": "Desarrollo de API", "desc": "Sistemas API RESTful y GraphQL seguros y rápidos." }
+      }
+    }
+  },
+  "Testimonial": {
+    "title": "TESTIMONIOS",
+    "subtitle": "Comentarios de Clientes",
+    "description": "Vea lo que dicen nuestros socios sobre nuestra ética de trabajo, precisión de diseño y calidad de código.",
+    "reviews": {
+      "design": {
+        "1": { "name": "Sarah Jenkins", "designation": "Fundadora @DesignCo", "content": "El diseño UI/UX que entregaron fue absolutamente impresionante. Nuestras tasas de conversión aumentaron un 40%." },
+        "2": { "name": "Michael Brown", "designation": "Dueño de Producto @TechFlow", "content": "Entendieron nuestra voz de marca perfectamente. Los mapas de viaje nos ayudaron a identificar puntos débiles." },
+        "3": { "name": "Emily Chen", "designation": "Directora de Marketing @Glow", "content": "Estético, funcional y fácil de usar. La mejor experiencia con una agencia de diseño hasta ahora." },
+        "4": { "name": "David Smith", "designation": "CEO @StartupX", "content": "La identidad visual que crearon nos ayudó a asegurar nuestra inversión Serie A." }
+      },
+      "code": {
+        "1": { "name": "Alex Techson", "designation": "CTO @DevCorp", "content": "Código limpio, arquitectura escalable y documentación perfecta. Su equipo de ingeniería es de primera clase." },
+        "2": { "name": "John Doe", "designation": "Desarrollador Líder @SoftSys", "content": "Migrar a microservicios fue muy fácil con su ayuda. El rendimiento del sistema mejoró significativamente." },
+        "3": { "name": "Jane Developer", "designation": "VP Ingeniería @CloudNet", "content": "Seguro, rápido y confiable. Construyeron un backend que maneja millones de solicitudes sin problemas." },
+        "4": { "name": "Chris Server", "designation": "Gerente DevOps @OpsLife", "content": "Los pipelines de CI/CD que configuraron nos ahorran horas de trabajo manual cada semana." }
+      }
+    }
+  },
+  "Pricing": {
+    "title": "PRECIOS",
+    "subtitle": "Elige tu Plan",
+    "description": "Opciones de precios flexibles adaptadas a sus necesidades. Ya sea perfección de diseño o escalabilidad de código.",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "getStarted": "Empezar",
+    "plans": {
+      "design": {
+        "basic": { "title": "Freelancer", "price": "49", "desc": "Perfecto para diseñadores individuales." },
+        "pro": { "title": "Agencia", "price": "99", "desc": "Para equipos de diseño en crecimiento." },
+        "enterprise": { "title": "Empresarial", "price": "199", "desc": "Gestión completa del sistema de diseño." }
+      },
+      "code": {
+        "basic": { "title": "Inicial", "price": "29", "desc": "Para proyectos de hobby y MVP." },
+        "pro": { "title": "Pro SaaS", "price": "79", "desc": "Todo lo que necesitas para escalar." },
+        "enterprise": { "title": "Equipo", "price": "149", "desc": "Seguridad y soporte avanzados." }
+      }
+    }
+  },
+  "CTA": {
+    "design": {
+      "title": "¿Listo para Transformar tu Marca?",
+      "description": "Únase a más de 500 empresas que confiaron en nosotros. Creemos algo único juntos.",
+      "button": "Iniciar Proyecto de Diseño"
+    },
+    "code": {
+      "title": "¿Listo para Escalar tus Sistemas?",
+      "description": "Construyamos la infraestructura robusta y de alto rendimiento que su negocio necesita para crecer sin límites.",
+      "button": "Iniciar Ingeniería"
+    },
+    "viewPortfolio": "Ver Portafolio"
+  },
+  "Contact": {
+    "title": "Contáctanos",
+    "subtitle": "Ponerse en Contacto",
+    "description": "¿Tiene un proyecto en mente o quiere discutir detalles técnicos? Estamos aquí para ayudarle a construir el futuro.",
+    "form": {
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "subject": "Asunto",
+      "phone": "Teléfono",
+      "message": "Su Mensaje",
+      "submit": "Enviar Mensaje"
+    },
+    "info": {
+      "title": "Encuéntranos",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "addressValue": "Teknopark Estambul, Turquía"
+    }
+  },
+  "Footer": {
+    "description": "Creamos experiencias digitales que fusionan el arte con la tecnología. Su visión, nuestra innovación.",
+    "quickLinks": "Enlaces Rápidos",
+    "support": "Soporte",
+    "newsletter": {
+      "title": "Boletín",
+      "subtitle": "Suscríbete para recibir actualizaciones",
+      "placeholder": "Dirección de correo",
+      "button": "Suscribirse"
+    },
+    "copyright": "© {year} ACRTECH. Todos los derechos reservados.",
+    "contact": {
+      "email": "Correo",
+      "phone": "Teléfono"
+    }
+  }
+}
