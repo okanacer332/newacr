@@ -1,18 +1,20 @@
 {
   "Header": {
-    "designMode": "تصميم",
-    "codeMode": "كود",
-    "letsTalk": "لننتحدث",
-    "getInTouch": "تواصل معنا",
-    "menu": {
-      "home": "الرئيسية",
-      "about": "من نحن",
-      "blog": "المدونة",
-      "docs": "وثائق",
-      "support": "دعم",
-      "pages": "صفحات"
-    }
-  },
+  "designMode": "تصميم",
+  "codeMode": "كود",
+  "letsTalk": "لنتحدث",
+  "getInTouch": "تواصل معنا",
+  "menu": {
+    "home": "الرئيسية",
+    "services": "الخدمات",
+    "features": "الميزات",
+    "pricing": "الأسعار",
+    "testimonials": "الآراء",
+    "contact": "اتصل بنا",
+    "blog": "المدونة",
+    "docs": "الوثائق"
+  }
+},
   "Hero": {
     "design": {
       "badge": "وكالة تصميم UX-UI",

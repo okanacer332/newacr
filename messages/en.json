@@ -1,18 +1,20 @@
 {
   "Header": {
-    "designMode": "DESIGN",
-    "codeMode": "CODE",
-    "letsTalk": "Let's Talk",
-    "getInTouch": "Get in Touch",
-    "menu": {
-      "home": "Home",
-      "about": "About",
-      "blog": "Blog",
-      "docs": "Docs",
-      "support": "Support",
-      "pages": "Pages"
-    }
-  },
+  "designMode": "Design",
+  "codeMode": "Code",
+  "letsTalk": "Let's Talk",
+  "getInTouch": "Get in Touch",
+  "menu": {
+    "home": "Home",
+    "services": "Services",
+    "features": "Features",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "blog": "Blog",
+    "docs": "Docs"
+  }
+},
   "Hero": {
     "design": {
       "badge": "UX-UI Design Agency",
