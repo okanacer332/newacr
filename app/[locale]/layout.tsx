@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import "../globals.css"; // KESİN YOL: app/[locale] içinden app/globals.css'e çıkar
+import "../globals.css"; 
 
 export default async function LocaleLayout({
   children,
@@ -11,8 +11,11 @@ export default async function LocaleLayout({
 }) {
   const messages = await getMessages();
 
+  // Arapça ise yönü 'rtl', diğerlerinde 'ltr' yap
+  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <body className="dark:bg-black">
         <NextIntlClientProvider messages={messages}>
           {children}

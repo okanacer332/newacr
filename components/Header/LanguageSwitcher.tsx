@@ -1,99 +1,81 @@
 "use client";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter, routing } from "@/i18n/routing"; // routing'i buradan çekiyoruz
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 
 const LanguageSwitcher = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const locale = useLocale(); // Şu anki aktif dil
+  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const trigger = useRef<any>(null);
-  const dropdown = useRef<any>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Dil verileri: Bayraklar ve etiketler
-  const languages = {
-    tr: { label: "TR", flag: "🇹🇷", longName: "Turkish" },
-    en: { label: "EN", flag: "🇺🇸", longName: "English" },
-  };
-
-  // Dropdown dışına tıklanırsa kapat
   useEffect(() => {
-    const clickHandler = ({ target }: MouseEvent) => {
-      if (!dropdown.current) return;
-      if (
-        !dropdownOpen ||
-        dropdown.current.contains(target) ||
-        trigger.current.contains(target)
-      )
-        return;
-      setDropdownOpen(false);
-    };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  }, [dropdownOpen]);
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-  // Dil değiştirme fonksiyonu
-  const handleLanguageChange = (nextLocale: string) => {
-    router.replace(pathname, { locale: nextLocale });
-    setDropdownOpen(false);
+  const handleLanguageChange = (newLocale: string) => {
+    // Mevcut URL yapısını koruyarak dili değiştir
+    // Örn: /en/about -> /ar/about
+    const segments = pathname.split('/');
+    // segments[0] boş stringtir, segments[1] locale'dir
+    segments[1] = newLocale; 
+    const newPath = segments.join('/');
+    
+    router.push(newPath);
+    setIsOpen(false);
   };
+
+  const languages = [
+    { code: "tr", label: "Türkçe", flag: "🇹🇷" },
+    { code: "en", label: "English", flag: "🇬🇧" },
+    { code: "ru", label: "Русский", flag: "🇷🇺" },
+    { code: "es", label: "Español", flag: "🇪🇸" },
+    { code: "ar", label: "العربية", flag: "🇸🇦" }, // Arapça
+  ];
+
+  const currentLang = languages.find((l) => l.code === locale) || languages[0];
 
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
-        ref={trigger}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
-        className="flex items-center gap-2 font-medium text-black dark:text-white hover:text-primary transition-colors duration-300"
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-sm font-medium text-black transition-colors hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
       >
-        {/* Aktif dilin bayrağı ve kısaltması */}
-        <span className="text-xl">{languages[locale as keyof typeof languages].flag}</span>
-        <span>{languages[locale as keyof typeof languages].label}</span>
-        
-        {/* Aşağı ok ikonu */}
+        <span className="text-lg">{currentLang.flag}</span>
+        <span className="uppercase">{currentLang.code}</span>
         <svg
-          className={`h-4 w-4 fill-current transition-transform duration-200 ${
-            dropdownOpen ? "rotate-180" : ""
-          }`}
-          viewBox="0 0 20 20"
+          className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <path
-            fillRule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clipRule="evenodd"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
 
-      {/* Açılır Menü */}
-      <div
-        ref={dropdown}
-        onFocus={() => setDropdownOpen(true)}
-        onBlur={() => setDropdownOpen(false)}
-        className={`absolute right-0 mt-2 w-32 rounded-md border border-stroke bg-white p-2 shadow-solid-12 dark:border-strokedark dark:bg-black ${
-          dropdownOpen
-            ? "visible translate-y-0 opacity-100"
-            : "invisible -translate-y-2 opacity-0"
-        } transition-all duration-300 z-50`}
-      >
-        <div className="flex flex-col gap-1">
-          {/* routing.locales üzerinden dönerek listeyi oluşturuyoruz (tr önce gelir) */}
-          {routing.locales.map((cur) => (
+      {isOpen && (
+        <div className="absolute right-0 top-full mt-2 w-40 overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-black z-50">
+          {languages.map((lang) => (
             <button
-              key={cur}
-              onClick={() => handleLanguageChange(cur)}
-              className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-all duration-300 hover:bg-gray-100 dark:hover:bg-hoverdark ${
-                locale === cur
-                  ? "bg-gray-100 dark:bg-hoverdark text-primary font-semibold"
-                  : "text-black dark:text-white"
+              key={lang.code}
+              onClick={() => handleLanguageChange(lang.code)}
+              className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm transition-colors hover:bg-gray-50 dark:hover:bg-white/5 ${
+                locale === lang.code ? "font-bold text-primary" : "text-gray-600 dark:text-gray-300"
               }`}
             >
-              <span className="text-xl">{languages[cur as keyof typeof languages].flag}</span>
-              <span>{languages[cur as keyof typeof languages].longName}</span>
+              <span className="text-lg">{lang.flag}</span>
+              <span>{lang.label}</span>
             </button>
           ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };
