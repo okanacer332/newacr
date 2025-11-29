@@ -31,8 +31,13 @@ const Header = () => {
 
   // Akıllı Navigasyon (Scroll ve Sayfa Geçişi)
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, item: any) => {
+    // Link ana sayfaya gidiyorsa VE bir sectionId varsa (Örn: #features)
     if (item.path === "/" && item.sectionId) {
-      if (pathname === "/" || pathname === "/tr" || pathname === "/en") {
+      
+      // GÜNCELLEME: Artık tüm diller ana sayfa olarak kabul ediliyor
+      const isHomePage = ["/", "/tr", "/en", "/ar", "/es", "/ru"].includes(pathname);
+
+      if (isHomePage) {
          e.preventDefault();
          const element = document.getElementById(item.sectionId);
          if (element) {
@@ -44,7 +49,7 @@ const Header = () => {
              top: offsetPosition,
              behavior: "smooth"
            });
-           setNavigationOpen(false);
+           setNavigationOpen(false); // Mobildeysek menüyü kapat
          }
       }
     } else {
