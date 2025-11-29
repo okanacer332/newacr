@@ -171,19 +171,20 @@
     }
   },
   "Footer": {
-    "description": "Sanatı teknolojiyle buluşturan dijital deneyimler tasarlıyoruz. Sizin vizyonunuz, bizim inovasyonumuz.",
-    "quickLinks": "Hızlı Bağlantılar",
+    "description": "Geleceği şekillendiren teknolojilerle işletmenizi büyütün. Modern, hızlı ve güvenilir çözümler.",
+    "usefulLinks": "Hızlı Linkler",
     "support": "Destek",
-    "newsletter": {
-      "title": "Bülten",
-      "subtitle": "Gelişmelerden haberdar olmak için abone olun",
-      "placeholder": "E-posta adresi",
-      "button": "Abone Ol"
-    },
-    "copyright": "© {year} ACRTECH. Tüm hakları saklıdır.",
-    "contact": {
-      "email": "E-posta",
-      "phone": "Telefon"
+    "followUs": "Bizi Takip Edin",
+    "rights": "Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "links": {
+      "home": "Ana Sayfa",
+      "features": "Özellikler",
+      "pricing": "Fiyatlar",
+      "contact": "İletişim",
+      "blog": "Blog",
+      "docs": "Dokümantasyon"
     }
   }
 }

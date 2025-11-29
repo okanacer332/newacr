@@ -171,19 +171,20 @@
     }
   },
   "Footer": {
-    "description": "Creamos experiencias digitales que fusionan el arte con la tecnología. Su visión, nuestra innovación.",
-    "quickLinks": "Enlaces Rápidos",
+    "description": "Haga crecer su negocio con tecnologías que dan forma al futuro. Soluciones modernas, rápidas y fiables.",
+    "usefulLinks": "Enlaces Útiles",
     "support": "Soporte",
-    "newsletter": {
-      "title": "Boletín",
-      "subtitle": "Suscríbete para recibir actualizaciones",
-      "placeholder": "Dirección de correo",
-      "button": "Suscribirse"
-    },
-    "copyright": "© {year} ACRTECH. Todos los derechos reservados.",
-    "contact": {
-      "email": "Correo",
-      "phone": "Teléfono"
+    "followUs": "Síguenos",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Uso",
+    "links": {
+      "home": "Inicio",
+      "features": "Características",
+      "pricing": "Precios",
+      "contact": "Contacto",
+      "blog": "Blog",
+      "docs": "Documentación"
     }
   }
 }
