@@ -1,6 +1,7 @@
 "use client";
 import { useViewMode } from "@/app/context/ViewModeContext";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const { mode } = useViewMode();
@@ -26,24 +27,64 @@ const Hero = () => {
     buttonSecondary: isDesign
       ? "text-purple-600 border-purple-200 hover:bg-purple-50 dark:border-purple-800 dark:hover:bg-purple-900/30"
       : "text-blue-600 border-blue-200 hover:bg-blue-50 dark:border-blue-800 dark:hover:bg-blue-900/30",
+    blobColor: isDesign 
+      ? "from-purple-400/40 to-pink-400/40" 
+      : "from-blue-400/40 to-cyan-400/40",
+    // Dot renklerini daha koyu/canlı seçtim
+    dotColor: isDesign ? "bg-purple-600" : "bg-blue-600",
+    pingColor: isDesign ? "bg-purple-500" : "bg-blue-500"
   };
 
   return (
     <section className="relative overflow-hidden pt-35 md:pt-40 xl:pt-46 pb-20">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+      
+      {/* --- BACKGROUND ANIMATED BLOB --- */}
+      <div className="absolute inset-0 -z-10 flex justify-center items-start overflow-hidden">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className={`absolute top-0 h-[350px] w-[350px] sm:h-[500px] sm:w-[500px] md:h-[600px] md:w-[600px] rounded-full bg-gradient-to-b blur-[80px] sm:blur-[100px] dark:opacity-20 ${theme.blobColor}`}
+        />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 md:px-8 relative z-10">
         <div className="flex flex-col items-center text-center">
           
           {/* Badge */}
-          <div className={`mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold border backdrop-blur-md transition-colors duration-500 ${
+          <div className={`mb-6 inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-sm font-bold border backdrop-blur-md transition-colors duration-500 ${
             isDesign 
-              ? "border-purple-200 bg-purple-50/50 text-purple-700 dark:border-purple-800 dark:bg-purple-900/20 dark:text-purple-300" 
-              : "border-blue-200 bg-blue-50/50 text-blue-700 dark:border-blue-800 dark:bg-blue-900/20 dark:text-blue-300"
+              ? "border-purple-200 bg-purple-50/80 text-purple-900 dark:border-purple-800 dark:bg-purple-900/40 dark:text-purple-100" 
+              : "border-blue-200 bg-blue-50/80 text-blue-900 dark:border-blue-800 dark:bg-blue-900/40 dark:text-blue-100"
           }`}>
-            <span className="relative flex h-2 w-2">
-              <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${isDesign ? "bg-purple-400" : "bg-blue-400"}`}></span>
-              <span className={`relative inline-flex h-2 w-2 rounded-full ${isDesign ? "bg-purple-500" : "bg-blue-500"}`}></span>
-            </span>
-            {isDesign ? "✨ UX-UI Design Agency" : "🚀 Full-Stack Development"}
+            
+            {/* --- CUSTOM PULSING DOT --- */}
+            <div className="relative flex h-3 w-3 items-center justify-center">
+              {/* 1. Dış Halka (Radar Efekti) */}
+              <motion.span
+                className={`absolute h-full w-full rounded-full opacity-70 ${theme.pingColor}`}
+                animate={{ 
+                  scale: [1, 2.5],  // 1 kattan 2.5 kata çıksın (Daha geniş)
+                  opacity: [0.7, 0] // Opaklık 0.7'den başlayıp sıfırlansın
+                }}
+                transition={{ 
+                  duration: 1.5,     // 1.5 saniyede tamamlasın
+                  repeat: Infinity,  // Sonsuza kadar tekrar etsin
+                  ease: "easeOut"    // Dışarı doğru yavaşlasın
+                }}
+              />
+              {/* 2. İç Nokta (Sabit) */}
+              <span className={`relative h-2.5 w-2.5 rounded-full ${theme.dotColor} shadow-sm`}></span>
+            </div>
+            {/* -------------------------- */}
+            
+            {isDesign ? "UX-UI Design Agency" : "Full-Stack Development"}
           </div>
 
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-black dark:text-white sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
