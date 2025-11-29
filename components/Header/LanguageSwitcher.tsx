@@ -21,10 +21,7 @@ const LanguageSwitcher = () => {
   }, []);
 
   const handleLanguageChange = (newLocale: string) => {
-    // Mevcut URL yapısını koruyarak dili değiştir
-    // Örn: /en/about -> /ar/about
     const segments = pathname.split('/');
-    // segments[0] boş stringtir, segments[1] locale'dir
     segments[1] = newLocale; 
     const newPath = segments.join('/');
     
@@ -37,7 +34,7 @@ const LanguageSwitcher = () => {
     { code: "en", label: "English", flag: "🇬🇧" },
     { code: "ru", label: "Русский", flag: "🇷🇺" },
     { code: "es", label: "Español", flag: "🇪🇸" },
-    { code: "ar", label: "العربية", flag: "🇸🇦" }, // Arapça
+    { code: "ar", label: "العربية", flag: "🇸🇦" },
   ];
 
   const currentLang = languages.find((l) => l.code === locale) || languages[0];
@@ -46,12 +43,13 @@ const LanguageSwitcher = () => {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-sm font-medium text-black transition-colors hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+        // GÜNCELLEME: padding ve gap değerleri mobilde küçültüldü
+        className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-medium text-black transition-colors hover:bg-gray-200 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
       >
-        <span className="text-lg">{currentLang.flag}</span>
-        <span className="uppercase">{currentLang.code}</span>
+        <span className="text-base sm:text-lg">{currentLang.flag}</span>
+        <span className="hidden sm:inline uppercase">{currentLang.code}</span>
         <svg
-          className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          className={`h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -61,16 +59,16 @@ const LanguageSwitcher = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-40 overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-black z-50">
+        <div className="absolute right-0 top-full mt-2 w-32 sm:w-40 overflow-hidden rounded-xl border border-gray-100 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-black z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`flex w-full items-center gap-3 px-4 py-2 text-left text-sm transition-colors hover:bg-gray-50 dark:hover:bg-white/5 ${
+              className={`flex w-full items-center gap-3 px-3 py-2 text-left text-xs sm:text-sm transition-colors hover:bg-gray-50 dark:hover:bg-white/5 ${
                 locale === lang.code ? "font-bold text-primary" : "text-gray-600 dark:text-gray-300"
               }`}
             >
-              <span className="text-lg">{lang.flag}</span>
+              <span className="text-base sm:text-lg">{lang.flag}</span>
               <span>{lang.label}</span>
             </button>
           ))}
