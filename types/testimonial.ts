@@ -3,6 +3,5 @@ export type Testimonial = {
   name: string;
   designation: string;
   image: any; // veya string
-  content: string;
-  star: number; // <-- EKLENMESİ GEREKEN SATIR
+  content: string; 
 };
