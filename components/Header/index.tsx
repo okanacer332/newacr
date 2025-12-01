@@ -65,26 +65,26 @@ const Header = () => {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 md:px-8">
           
-          {/* 1. LOGO ALANI */}
+          {/* 1. LOGO ALANI (Sol) */}
           <div className="flex items-center gap-3 relative z-50 shrink-0">
             <Link href="/" onClick={() => setNavigationOpen(false)} className="group flex items-center gap-3">
-              {/* Logo İkonu (Her zaman görünür) */}
-              <div className={`relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br ${activeGradient} text-white font-bold text-lg sm:text-xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+              {/* Logo İkonu */}
+              <div className={`relative flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br ${activeGradient} text-white font-bold text-lg sm:text-xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
                 A
               </div>
-              {/* Logo Yazısı (Mobilde GİZLİ - Yer kazanmak için kritik nokta burası) */}
+              {/* Logo Yazısı (Mobilde GİZLİ - Yer tasarrufu için şart) */}
               <span className="text-xl font-bold tracking-tight text-black dark:text-white hidden sm:block">
                 ACR<span className={`bg-gradient-to-r ${activeGradient} bg-clip-text text-transparent transition-all duration-500`}>TECH</span>
               </span>
             </Link>
           </div>
 
-          {/* 2. MODE SWITCHER (ORTA) */}
+          {/* 2. MODE SWITCHER (ORTA - YAZILI VERSİYON) */}
           <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 
             ${stickyMenu ? "scale-90" : "scale-100"}`}
           >
-            {/* Genişliği 110px'e çektik (mobilde), böylece sağa sola çarpmaz */}
-            <div className="relative flex h-8 sm:h-12 w-[110px] sm:w-[280px] items-center rounded-full bg-white/10 p-1 sm:p-1.5 shadow-inner backdrop-blur-2xl border border-white/20 dark:bg-black/20 dark:border-white/10">
+            {/* Genişliği w-[180px] yaptık. Bu sayede yazılar sığacak. */}
+            <div className="relative flex h-9 sm:h-12 w-[180px] sm:w-[280px] items-center rounded-full bg-white/10 p-1 sm:p-1.5 shadow-inner backdrop-blur-2xl border border-white/20 dark:bg-black/20 dark:border-white/10">
               <div
                 className={`absolute h-[calc(100%-8px)] sm:h-9 w-[calc(50%-4px)] sm:w-[calc(50%-6px)] rounded-full shadow-lg transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] top-1 sm:top-1.5 ${glowColor} ${
                   isDesign 
@@ -92,32 +92,38 @@ const Header = () => {
                     : "left-[calc(50%+2px)] sm:left-[calc(50%+1.5px)] bg-gradient-to-r from-blue-600 to-cyan-500"
                 }`}
               />
+              
+              {/* Design Button */}
               <button
                 onClick={() => setMode("design")}
                 className={`relative z-10 w-1/2 flex items-center justify-center gap-1 sm:gap-2 rounded-full transition-colors duration-300 ${
                   isDesign ? "text-white" : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 }`}
               >
-                <span className={`text-xs sm:text-lg transition-transform duration-500 ${isDesign ? "scale-125 rotate-0" : "scale-100 rotate-12 opacity-50"}`}>🎨</span>
-                <span className="hidden sm:block text-[10px] sm:text-sm font-bold tracking-wide">{t('designMode')}</span>
+                <span className={`text-sm sm:text-lg transition-transform duration-500 ${isDesign ? "scale-110 rotate-0" : "scale-100 rotate-12 opacity-50"}`}>🎨</span>
+                {/* Yazıyı Geri Getirdik - Mobilde text-[10px] ile sığdırıyoruz */}
+                <span className="text-[10px] sm:text-sm font-bold tracking-wide leading-none whitespace-nowrap">{t('designMode')}</span>
               </button>
+
+              {/* Code Button */}
               <button
                 onClick={() => setMode("code")}
                 className={`relative z-10 w-1/2 flex items-center justify-center gap-1 sm:gap-2 rounded-full transition-colors duration-300 ${
                   !isDesign ? "text-white" : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 }`}
               >
-                <span className={`text-xs sm:text-lg transition-transform duration-500 ${!isDesign ? "scale-125 rotate-0" : "scale-100 -rotate-12 opacity-50"}`}>👨‍💻</span>
-                <span className="hidden sm:block text-[10px] sm:text-sm font-bold tracking-wide">{t('codeMode')}</span>
+                <span className={`text-sm sm:text-lg transition-transform duration-500 ${!isDesign ? "scale-110 rotate-0" : "scale-100 -rotate-12 opacity-50"}`}>👨‍💻</span>
+                {/* Yazıyı Geri Getirdik */}
+                <span className="text-[10px] sm:text-sm font-bold tracking-wide leading-none whitespace-nowrap">{t('codeMode')}</span>
               </button>
             </div>
           </div>
 
-          {/* 3. SAĞ TARAF (Hamburger + Dil) */}
+          {/* 3. SAĞ TARAF (Hamburger + Dil - Sağda sabit) */}
           <div className="flex items-center gap-1 sm:gap-4 relative z-50 shrink-0">
             
-            {/* Dil Değiştirici - Mobilde gap ayarı ile sıkışmayı önledik */}
-            <div className="scale-90 sm:scale-100">
+            {/* Dil Değiştirici - Biraz küçülttük (scale-90) */}
+            <div className="scale-90 sm:scale-100 origin-right">
                <LanguageSwitcher />
             </div>
 
@@ -136,12 +142,10 @@ const Header = () => {
         </div>
       </header>
 
-      {/* --- TAM EKRAN MENÜ OVERLAY --- */}
+      {/* --- MENU OVERLAY (Değişiklik Yok) --- */}
       <div className={`fixed inset-0 z-[60] bg-white/95 dark:bg-black/95 backdrop-blur-xl transition-all duration-500 flex flex-col justify-center items-center ${
         navigationOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
       }`}>
-        
-        {/* Kapatma Butonu */}
         <button 
           onClick={() => setNavigationOpen(false)} 
           className="absolute top-8 right-8 text-black dark:text-white p-2 hover:rotate-90 transition-transform duration-300"
