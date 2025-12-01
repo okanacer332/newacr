@@ -5,4 +5,7 @@ export type FeatureTab = {
   desc2: string;
   image: string;
   imageDark: string;
+  // Yeni eklenen alanlar
+  buttonLabel: string;
+  nextTabId: string;
 };
