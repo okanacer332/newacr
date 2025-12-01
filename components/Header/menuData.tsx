@@ -3,46 +3,47 @@ import { Menu } from "@/types/menu";
 const menuData: Menu[] = [
   {
     id: 1,
-    title: "home",
+    title: "home", // JSON key: menu.home
     path: "/",
-    sectionId: "home", // Hero bölümü için
     newTab: false,
   },
   {
     id: 2,
-    title: "services",
-    path: "/",
-    sectionId: "services", // Services bölümü için
+    title: "features", // JSON key: menu.features
+    path: "/#features",
+    sectionId: "features",
     newTab: false,
   },
   {
     id: 3,
-    title: "features",
-    path: "/",
-    sectionId: "features", // Features bölümü için
+    title: "blog", // JSON key: menu.blog
+    path: "/blog",
     newTab: false,
   },
   {
     id: 4,
-    title: "pricing",
-    path: "/",
-    sectionId: "pricing", // Pricing bölümü için
+    title: "docs", // JSON key: menu.docs
+    path: "/docs",
     newTab: false,
   },
   {
     id: 5,
-    title: "testimonials",
-    path: "/",
-    sectionId: "testimonials", // Testimonial bölümü için
+    title: "support", // JSON key: menu.support
+    path: "/support",
     newTab: false,
   },
+  // Örnek Dropdown (Gerekirse açarsın)
+  /*
   {
-    id: 6,
-    title: "contact",
-    path: "/",
-    sectionId: "contact", // CTA/Contact bölümü için
+    id: 33,
+    title: "pages",
     newTab: false,
+    submenu: [
+      { id: 331, title: "about", path: "/about", newTab: false },
+      { id: 332, title: "contact", path: "/contact", newTab: false },
+    ],
   },
+  */
 ];
 
 export default menuData;
