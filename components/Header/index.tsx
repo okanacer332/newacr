@@ -91,21 +91,21 @@ const Header = () => {
                 {isDesign ? (
                    // TASARIM MODU: ACR + DESIGN + tech
                    <span className="text-xl font-bold tracking-tight text-black dark:text-white leading-none">
-                     ACR
+                     ACRTECH <span> I </span>
                      <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent ml-0.5">
-                       DESIGN
+                       Design
                        {/* tech ibaresi: Daha küçük, ince ve aynı gradyanla */}
-                       <span className="text-sm font-medium tracking-wide ml-0.5">tech</span>
+              
                      </span>
                    </span>
                 ) : (
                    // KOD MODU: ACR + CODE + tech
                    <span className="text-xl font-bold tracking-tight text-black dark:text-white leading-none">
-                     ACR
+                     ACRTECH <span> I </span>  
                      <span className="bg-gradient-to-r from-blue-600 to-teal-400 bg-clip-text text-transparent ml-0.5">
-                       CODE
+                      Code
                        {/* tech ibaresi */}
-                       <span className="text-sm font-medium tracking-wide ml-0.5">tech</span>
+                       
                      </span>
                    </span>
                 )}

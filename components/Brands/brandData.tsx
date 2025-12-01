@@ -1,6 +1,25 @@
 import { Brand } from "@/types/brand";
 
-const brandData: Brand[] = [
+// --- TASARIM MODU (Sadece 2 Tane) ---
+export const designBrands: Brand[] = [
+  {
+    id: 0.25,
+    name: "Client",
+    href: "#",
+    image: "/images/brand/brand-light-01.svg",
+    imageLight: "/images/brand/brand-dark-01.svg",
+  },
+  {
+    id: 0.3,
+    name: "Client",
+    href: "#",
+    image: "/images/brand/brand-light-02.svg",
+    imageLight: "/images/brand/brand-dark-02.svg",
+  },
+];
+
+// --- KOD MODU (Hepsi - 6 Tane) ---
+export const codeBrands: Brand[] = [
   {
     id: 0.25,
     name: "Client",
@@ -44,5 +63,3 @@ const brandData: Brand[] = [
     imageLight: "/images/brand/brand-dark-06.svg",
   },
 ];
-
-export default brandData;
