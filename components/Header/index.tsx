@@ -34,7 +34,6 @@ const Header = () => {
     // Link ana sayfaya gidiyorsa VE bir sectionId varsa (Örn: #features)
     if (item.path === "/" && item.sectionId) {
       
-      // GÜNCELLEME: Artık tüm diller ana sayfa olarak kabul ediliyor
       const isHomePage = ["/", "/tr", "/en", "/ar", "/es", "/ru"].includes(pathname);
 
       if (isHomePage) {
@@ -49,7 +48,7 @@ const Header = () => {
              top: offsetPosition,
              behavior: "smooth"
            });
-           setNavigationOpen(false); // Mobildeysek menüyü kapat
+           setNavigationOpen(false); // Menüden tıklandığında menüyü kapat
          }
       }
     } else {
@@ -75,7 +74,7 @@ const Header = () => {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8">
           
-          {/* LOGO */}
+          {/* LOGO (Sol Taraf) */}
           <div className="flex items-center gap-3 relative z-50 shrink-0">
             <Link href="/" onClick={() => setNavigationOpen(false)} className="group flex items-center gap-3">
               <div className={`relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${activeGradient} text-white font-bold text-xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
@@ -87,7 +86,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* MODE SWITCHER (Tasarım/Kod Butonu) */}
+          {/* MODE SWITCHER (Orta Kısım - Tasarım/Kod Butonu) */}
           <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 transition-all duration-500 
             ${stickyMenu ? "scale-90" : "scale-100"}`}
           >
@@ -120,68 +119,67 @@ const Header = () => {
             </div>
           </div>
 
-          {/* SAĞ TARAF (Menü Linkleri & Butonlar) */}
-          <div className="flex items-center gap-2 sm:gap-4 relative z-50 shrink-0">
-            <nav className="hidden lg:block">
-              <ul className="flex items-center gap-6">
-                {menuData.map((item, key) => (
-                  <li key={key}>
-                    <Link 
-                      href={item.path || "#"} 
-                      onClick={(e) => handleLinkClick(e, item)}
-                      className="text-sm font-medium text-black/60 hover:text-black dark:text-white/60 dark:hover:text-white transition-colors"
-                    >
-                      {t(`menu.${item.title}`)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
+          {/* SAĞ TARAF (Sadece Dil ve Hamburger Menü) */}
+          <div className="flex items-center gap-4 relative z-50 shrink-0">
+            
+            {/* Dil Değiştirici Her Zaman Görünür */}
             <div className="block">
                <LanguageSwitcher />
             </div>
 
-            <Link
-              href="/contact"
-              className={`hidden lg:flex items-center justify-center rounded-full bg-black dark:bg-white px-5 py-2 text-sm font-bold text-white dark:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg`}
-            >
-              {t('letsTalk')}
-            </Link>
-
-            {/* Mobile Menu Hamburger Button */}
+            {/* Hamburger Button - ARTIK HER EKRANDA GÖRÜNÜR (lg:hidden kaldırıldı) */}
             <button
               onClick={() => setNavigationOpen(!navigationOpen)}
-              className="block lg:hidden p-1.5 text-black dark:text-white"
+              className="block p-2 text-black dark:text-white hover:scale-110 transition-transform"
             >
-               <span className={`block h-0.5 w-5 bg-current mb-1 transition-transform ${navigationOpen ? "rotate-45 translate-y-1.5" : ""}`}></span>
-               <span className={`block h-0.5 w-5 bg-current mb-1 transition-opacity ${navigationOpen ? "opacity-0" : ""}`}></span>
-               <span className={`block h-0.5 w-5 bg-current transition-transform ${navigationOpen ? "-rotate-45 -translate-y-1.5" : ""}`}></span>
+               <div className="flex flex-col gap-[5px] items-end">
+                 <span className={`block h-0.5 rounded-full bg-current transition-all duration-300 ${navigationOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`}></span>
+                 <span className={`block h-0.5 rounded-full bg-current transition-all duration-300 ${navigationOpen ? "opacity-0 w-0" : "w-4"}`}></span>
+                 <span className={`block h-0.5 rounded-full bg-current transition-all duration-300 ${navigationOpen ? "w-6 -rotate-45 -translate-y-2" : "w-6"}`}></span>
+               </div>
             </button>
           </div>
         </div>
       </header>
       {/* --- HEADER BİTİŞİ --- */}
 
-      {/* --- MOBİL MENÜ OVERLAY (ARTIK HEADER DIŞINDA) --- */}
-      <div className={`fixed inset-0 z-[60] bg-white/95 dark:bg-black/95 backdrop-blur-xl transition-all duration-300 flex flex-col justify-center items-center lg:hidden ${
+      {/* --- TAM EKRAN MENÜ OVERLAY (HER CİHAZ İÇİN) --- */}
+      <div className={`fixed inset-0 z-[60] bg-white/95 dark:bg-black/95 backdrop-blur-xl transition-all duration-500 flex flex-col justify-center items-center ${
         navigationOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
       }`}>
-        {/* Kapatma Butonu */}
-        <button onClick={() => setNavigationOpen(false)} className="absolute top-6 right-6 text-2xl p-2 text-black dark:text-white">✕</button>
         
-        <nav className="flex flex-col items-center gap-6">
+        {/* Kapatma Butonu (Overlay içindeki) */}
+        <button 
+          onClick={() => setNavigationOpen(false)} 
+          className="absolute top-8 right-8 text-black dark:text-white p-2 hover:rotate-90 transition-transform duration-300"
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
+        <nav className="flex flex-col items-center gap-8">
           {menuData.map((item, key) => (
             <Link 
               key={key} 
               href={item.path || "#"} 
               onClick={(e) => handleLinkClick(e, item)}
-              className="text-xl font-bold text-black dark:text-white"
+              className="group relative text-3xl md:text-5xl font-bold text-black dark:text-white overflow-hidden"
             >
-               {t(`menu.${item.title}`)}
+               <span className="relative z-10 transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600">
+                 {t(`menu.${item.title}`)}
+               </span>
+               {/* Hover Alt Çizgi Efekti */}
+               <span className="absolute left-0 bottom-0 w-0 h-1 bg-gradient-to-r from-purple-600 to-pink-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
-          <Link href="/contact" onClick={() => setNavigationOpen(false)} className={`mt-4 px-8 py-3 rounded-full text-white font-bold text-lg shadow-lg bg-gradient-to-r ${activeGradient}`}>
+          
+          <Link 
+            href="/contact" 
+            onClick={() => setNavigationOpen(false)} 
+            className={`mt-8 px-10 py-4 rounded-full text-white font-bold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-r ${activeGradient}`}
+          >
             {t('getInTouch')}
           </Link>
         </nav>
