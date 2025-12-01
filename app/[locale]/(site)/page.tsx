@@ -12,6 +12,8 @@ import Testimonials from "@/components/Testimonial";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Blog from "@/components/Blog";
+import Services from "@/components/Services";
+ 
 
 export const metadata: Metadata = {
   title: "AcrTech | SaaS Boilerplate",
@@ -25,33 +27,20 @@ export default function Home() {
       {/* 1. Hero Bölümü (En Tepe) */}
       <Hero />
 
-      {/* 2. Özellikler */}
-      <Feature />
-      
+      <Services />
+
+       {/* 2. Fiyatlandırma */}
+      <Pricing />
+
       {/* 3. Hakkında */}
       <About />
       
       {/* 4. Tablı Özellikler */}
       <FeaturesTab />
       
-      {/* 5. İstatistikler */}
-      <FunFact />
-      
-      {/* 6. Entegrasyonlar */}
-      <Integration />
-      
       {/* 7. CTA (Harekete Geçirici Mesaj) */}
       <CTA />
-      
-      {/* 8. SSS */}
-      <FAQ />
-      
-      {/* 9. Müşteri Yorumları */}
-      <Testimonials />
-      
-      {/* 10. Fiyatlandırma */}
-      <Pricing />
-      
+        
       {/* 11. İletişim */}
       <Contact />
       
