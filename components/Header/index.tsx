@@ -65,17 +65,52 @@ const Header = () => {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-3 md:px-8">
           
-          {/* 1. LOGO ALANI (Sol) */}
+          {/* 1. LOGO ALANI (Sol) - GÜNCEL (Tech eklemeli) */}
           <div className="flex items-center gap-3 relative z-50 shrink-0">
             <Link href="/" onClick={() => setNavigationOpen(false)} className="group flex items-center gap-3">
-              {/* Logo İkonu */}
-              <div className={`relative flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br ${activeGradient} text-white font-bold text-lg sm:text-xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
-                A
+              
+              {/* --- LOGO İKONU --- */}
+              <div className={`relative flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br ${activeGradient} text-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                {isDesign ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="M2 2l7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                )}
               </div>
-              {/* Logo Yazısı (Mobilde GİZLİ - Yer tasarrufu için şart) */}
-              <span className="text-xl font-bold tracking-tight text-black dark:text-white hidden sm:block">
-                ACR<span className={`bg-gradient-to-r ${activeGradient} bg-clip-text text-transparent transition-all duration-500`}>TECH</span>
-              </span>
+
+              {/* --- LOGO METNİ --- */}
+              <div className="hidden sm:flex flex-col justify-center">
+                {isDesign ? (
+                   // TASARIM MODU: ACR + DESIGN + tech
+                   <span className="text-xl font-bold tracking-tight text-black dark:text-white leading-none">
+                     ACRTECH <span> I </span>
+                     <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent ml-0.5">
+                       Design
+                       {/* tech ibaresi: Daha küçük, ince ve aynı gradyanla */}
+              
+                     </span>
+                   </span>
+                ) : (
+                   // KOD MODU: ACR + CODE + tech
+                   <span className="text-xl font-bold tracking-tight text-black dark:text-white leading-none">
+                     ACRTECH <span> I </span>  
+                     <span className="bg-gradient-to-r from-blue-600 to-teal-400 bg-clip-text text-transparent ml-0.5">
+                      Code
+                       {/* tech ibaresi */}
+                       
+                     </span>
+                   </span>
+                )}
+              </div>
+
             </Link>
           </div>
 
